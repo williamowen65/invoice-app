@@ -5,6 +5,9 @@ $br: 20px;
     width: $width;
     border-radius: 0 $br $br 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .logo {
         border-radius: 0 $br $br 0;
         display: flex;
@@ -29,9 +32,26 @@ $br: 20px;
         }
     }
     .bottom {
-        // background-color: green;
-        * {
-            display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .theme {
+            height: $width;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .imgContainer {
+            height: $width;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #494e6e;
+            width: 100%;
+            img {
+                border-radius: 50%;
+                width: 40px;
+            }
         }
     }
 }

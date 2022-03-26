@@ -13,9 +13,13 @@ export default function Sidebar(props) {
             <div className={style.logo}>{logo()}</div>
 
             <div className={style.bottom}>
-                {moon()}
-                {sun()}
-                <img src={avatar.src} />
+                <div className={style.theme}>
+                    {moon()}
+                    {sun()}
+                </div>
+                <div className={style.imgContainer}>
+                    <img src={avatar.src} />
+                </div>
             </div>
         </div>
     );
