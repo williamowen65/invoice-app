@@ -5,7 +5,7 @@ import Header from "../components/header/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <div style={{ display: "flex" }}>
+        <div className='layout'>
             <Sidebar />
             <main>
                 <Header />

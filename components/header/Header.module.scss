@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 $blue: #7c5dfa;
 $br: 10px;
 
@@ -9,9 +11,6 @@ $br: 10px;
         h1 {
             margin: 0;
             font-weight: 400;
-        }
-        span {
-            color: #888eb0;
         }
     }
     .right {
@@ -48,12 +47,18 @@ $br: 10px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
-                    background: white;
                     border-radius: $br;
                     width: 192px;
                     height: 128px;
                     padding: 14px;
-                    box-shadow: 0 10px 20px #48549f3f;
+                    @media (prefers-color-scheme: light) {
+                        background: $card-bg-light;
+                        box-shadow: 0 10px 20px #48549f3f;
+                    }
+                    @media (prefers-color-scheme: dark) {
+                        background: $card-bg-dark;
+                        box-shadow: 0 10px 20px #0000003b;
+                    }
                     .field {
                         display: flex;
                         cursor: pointer;
@@ -66,7 +71,12 @@ $br: 10px;
                             .checkbox {
                                 min-width: 16px;
                                 height: 16px;
-                                background-color: #dfe3fa;
+                                @media (prefers-color-scheme: light) {
+                                    background-color: $checkbox-bg-light;
+                                }
+                                @media (prefers-color-scheme: dark) {
+                                    background-color: $checkbox-bg-dark;
+                                }
                                 // border: 1px solid #7c5dfa;
                                 margin-right: 10px;
                                 border-radius: 2px;

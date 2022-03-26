@@ -1,8 +1,23 @@
+@import "./variables";
+
 html,
 body {
     padding: 0;
     margin: 0;
-    background-color: #f8f8fb;
+    @media (prefers-color-scheme: light) {
+        background-color: $main-bg-light;
+        color: $main-pri-color-light;
+        .sec-color {
+            color: $main-sec-color-light;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        color: $main-pri-color-dark;
+        .sec-color {
+            color: $main-sec-color-dark;
+        }
+        background-color: $main-bg-dark;
+    }
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -14,6 +29,14 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    @media #{$desktop} {
+        flex-direction: row;
+    }
 }
 
 main {

@@ -23,7 +23,7 @@ export default function Header(props) {
         <header className={style.header}>
             <div className={style.pageinfo}>
                 <h1>Invoices</h1>
-                <span>There are {0} total invoices</span>
+                <span className='sec-color'>There are {0} total invoices</span>
             </div>
             <div className={style.right}>
                 <div className={style.filter} ref={toggle}>
