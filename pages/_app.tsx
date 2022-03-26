@@ -1,8 +1,14 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.scss";
+import type { AppProps } from "next/app";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+    return (
+        <div style={{ display: "flex" }}>
+            <Sidebar />
+            <Component {...pageProps} />
+        </div>
+    );
 }
 
-export default MyApp
+export default MyApp;
