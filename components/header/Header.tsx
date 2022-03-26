@@ -23,12 +23,19 @@ export default function Header(props) {
         <header className={style.header}>
             <div className={style.pageinfo}>
                 <h1>Invoices</h1>
-                <span className='sec-color'>There are {0} total invoices</span>
+                <span className='sec-color'>
+                    <span className='hideOnMobile'>There are </span>
+                    {0} total
+                    <span className='hideOnMobile'> invoices</span>
+                </span>
             </div>
             <div className={style.right}>
                 <div className={style.filter} ref={toggle}>
                     <label className={style.filterText} onClick={handleToggle}>
-                        Filter by status
+                        <span>
+                            Filter
+                            <span className='hideOnMobile'> by status</span>
+                        </span>
                         <span className={style.arrow}>{arrow()}</span>
                     </label>
                     <div className={style.dialog + " dialog"}>
@@ -65,7 +72,10 @@ export default function Header(props) {
                     <div className={style.add}>
                         <span>+</span>
                     </div>
-                    <div className={style.text}>New Invoice</div>
+                    <div className={style.text}>
+                        New
+                        <span className='hideOnMobile'>Invoice</span>
+                    </div>
                 </button>
             </div>
         </header>

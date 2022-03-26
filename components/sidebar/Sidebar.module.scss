@@ -10,13 +10,14 @@
     height: $sidebar-width;
     border-radius: 0 0 0 0;
     width: 100vw;
+    height: $sidebar-width;
     display: flex;
     justify-content: space-between;
     @media #{$desktop} {
         border-radius: 0 $sidebar-borderRadius $sidebar-borderRadius 0;
         flex-direction: column;
         height: 100vh;
-        width: $sidebar-width;
+        width: $sidebar-width-desktop;
     }
     .logo {
         border-radius: 0 $sidebar-borderRadius $sidebar-borderRadius 0;
@@ -29,6 +30,10 @@
         background-color: #7c5dfa;
         overflow: hidden;
         cursor: pointer;
+        @media #{$desktop} {
+            width: $sidebar-width-desktop;
+            height: $sidebar-width-desktop;
+        }
         svg {
             z-index: 1;
         }
@@ -56,6 +61,10 @@
             justify-content: center;
             cursor: pointer;
             width: $sidebar-width;
+            @media #{$desktop} {
+                width: $sidebar-width-desktop;
+                height: $sidebar-width-desktop;
+            }
         }
         .imgContainer {
             height: $sidebar-width;
@@ -66,11 +75,17 @@
             width: $sidebar-width;
             cursor: pointer;
             @media #{$desktop} {
+                width: $sidebar-width-desktop;
+                height: $sidebar-width-desktop;
+                border-left: none;
                 border-top: 1px solid #494e6e;
             }
             img {
                 border-radius: 50%;
-                width: 40px;
+                width: 32px;
+                @media #{$desktop} {
+                    width: 40px;
+                }
             }
         }
     }

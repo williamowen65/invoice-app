@@ -45,3 +45,10 @@ main {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+.hideOnMobile {
+    display: none;
+    @media #{$tablet} {
+        display: initial;
+    }
+}

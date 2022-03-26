@@ -4,6 +4,7 @@ $blue: #7c5dfa;
 $br: 10px;
 
 .header {
+    margin: 56px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,8 +25,12 @@ $br: 10px;
                 justify-content: space-around;
                 align-items: center;
                 cursor: pointer;
-                width: 143px;
+                width: 45.5px;
+                @media #{$tablet} {
+                    width: 143px;
+                }
                 .arrow {
+                    padding: 0 20px;
                     transition: transform 0.5s;
                 }
             }
@@ -37,7 +42,10 @@ $br: 10px;
             .dialog {
                 display: none;
                 position: absolute;
-                transform: translateY(87%);
+                transform: translate(-88px, 87%);
+                @media #{$tablet} {
+                    transform: translate(0px, 87%);
+                }
             }
             &[open] {
                 .arrow {
@@ -120,7 +128,10 @@ $br: 10px;
             border-radius: 500px;
             display: flex;
             align-items: center;
-            width: 150px;
+            width: 90px;
+            @media #{$tablet} {
+                width: 150px;
+            }
             height: 48px;
             .add {
                 color: $blue;
