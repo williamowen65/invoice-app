@@ -4,42 +4,19 @@ import arrow from "./assets/icon-arrow-down.svg";
 import check from "./assets/icon-check.svg";
 
 export default function Header(props) {
-    const dialog = useRef(null);
+    const toggle = useRef(null);
 
     const handleToggle = () => {
         let go = true;
         let dialogPos;
+        console.log("hi");
+        const el = toggle.current;
 
-        return function (e) {
-            // const el = dialog.current;
-            // if (go && el.hasAttribute("show")) {
-            //     if (
-            //         e.clientX < dialogPos.x &&
-            //         e.clientX > dialogPos.x + dialogPos.width &&
-            //         e.clientY < dialogPos.y &&
-            //         e.clientY > dialogPos.y + dialogPos.height
-            //     ) {
-            //         el.removeAttribute("show");
-            //     }
-            // } else if (go) {
-            // el.setAttribute("show", "");
-            // }
-            // go = false;
-            // setTimeout(() => {
-            //     go = true;
-            // });
-            // if (!dialogPos) {
-            //     dialogPos = el.getBoundingClientRect();
-            // }
-            // console.log(e.clientX, e.clientY);
-            // console.log(dialogPos);
-            // console.log(
-            //     e.clientX > dialogPos.x,
-            //     e.clientX < dialogPos.x + dialogPos.width,
-            //     e.clientY < dialogPos.y + dialogPos.height,
-            //     e.clientY < dialogPos.y + dialogPos.height
-            // );
-        };
+        if (el.hasAttribute("open")) {
+            el.removeAttribute("open");
+        } else {
+            el.setAttribute("open", "");
+        }
     };
 
     return (
@@ -48,18 +25,13 @@ export default function Header(props) {
                 <h1>Invoices</h1>
                 <span>There are {0} total invoices</span>
             </div>
-            <div className={style.right} onClick={handleToggle()}>
-                <div className={style.filter}>
-                    <label className={style.filterText}>
+            <div className={style.right}>
+                <div className={style.filter} ref={toggle}>
+                    <label className={style.filterText} onClick={handleToggle}>
                         Filter by status
-                        {arrow()}
+                        <span className={style.arrow}>{arrow()}</span>
                     </label>
-                    <div
-                        className={style.dialog + " dialog"}
-                        ref={dialog}
-                        show='true'
-                        // onClick={(e) => e.preventDefault()}
-                    >
+                    <div className={style.dialog + " dialog"}>
                         <div className={style.field}>
                             <input type='radio' id='draft' name='status' />
                             <label htmlFor='draft'>
