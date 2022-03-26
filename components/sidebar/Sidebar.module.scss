@@ -1,12 +1,6 @@
 @import "../../styles/variables";
 
 .sidebar {
-    @media (prefers-color-scheme: light) {
-        background-color: $sidebar-bg-light;
-    }
-    @media (prefers-color-scheme: dark) {
-        background-color: $sidebar-bg-dark;
-    }
     height: $sidebar-width;
     border-radius: 0 0 0 0;
     width: 100vw;

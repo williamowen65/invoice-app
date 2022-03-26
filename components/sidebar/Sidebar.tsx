@@ -22,7 +22,7 @@ export default function Sidebar(props) {
     };
 
     return (
-        <div className={style.sidebar}>
+        <div className={style.sidebar + " sidebar"}>
             <div className={style.logo}>{logo()}</div>
 
             <div className={style.bottom}>
