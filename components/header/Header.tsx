@@ -11,36 +11,34 @@ export default function Header(props) {
         let dialogPos;
 
         return function (e) {
-            const el = dialog.current;
-
-            if (go && el.hasAttribute("show")) {
-                if (
-                    e.clientX < dialogPos.x &&
-                    e.clientX > dialogPos.x + dialogPos.width &&
-                    e.clientY < dialogPos.y &&
-                    e.clientY > dialogPos.y + dialogPos.height
-                ) {
-                    el.removeAttribute("show");
-                }
-            } else if (go) {
-                el.setAttribute("show", "");
-            }
-            go = false;
-            setTimeout(() => {
-                go = true;
-            });
-
-            if (!dialogPos) {
-                dialogPos = el.getBoundingClientRect();
-            }
-            console.log(e.clientX, e.clientY);
-            console.log(dialogPos);
-            console.log(
-                e.clientX > dialogPos.x,
-                e.clientX < dialogPos.x + dialogPos.width,
-                e.clientY < dialogPos.y + dialogPos.height,
-                e.clientY < dialogPos.y + dialogPos.height
-            );
+            // const el = dialog.current;
+            // if (go && el.hasAttribute("show")) {
+            //     if (
+            //         e.clientX < dialogPos.x &&
+            //         e.clientX > dialogPos.x + dialogPos.width &&
+            //         e.clientY < dialogPos.y &&
+            //         e.clientY > dialogPos.y + dialogPos.height
+            //     ) {
+            //         el.removeAttribute("show");
+            //     }
+            // } else if (go) {
+            // el.setAttribute("show", "");
+            // }
+            // go = false;
+            // setTimeout(() => {
+            //     go = true;
+            // });
+            // if (!dialogPos) {
+            //     dialogPos = el.getBoundingClientRect();
+            // }
+            // console.log(e.clientX, e.clientY);
+            // console.log(dialogPos);
+            // console.log(
+            //     e.clientX > dialogPos.x,
+            //     e.clientX < dialogPos.x + dialogPos.width,
+            //     e.clientY < dialogPos.y + dialogPos.height,
+            //     e.clientY < dialogPos.y + dialogPos.height
+            // );
         };
     };
 
@@ -51,33 +49,46 @@ export default function Header(props) {
                 <span>There are {0} total invoices</span>
             </div>
             <div className={style.right} onClick={handleToggle()}>
-                <label className={style.filter}>
-                    Filter by status
-                    {arrow()}
-                    <div className={style.dialog + " dialog"} ref={dialog}>
+                <div className={style.filter}>
+                    <label className={style.filterText}>
+                        Filter by status
+                        {arrow()}
+                    </label>
+                    <div
+                        className={style.dialog + " dialog"}
+                        ref={dialog}
+                        show='true'
+                        // onClick={(e) => e.preventDefault()}
+                    >
                         <div className={style.field}>
                             <input type='radio' id='draft' name='status' />
-                            <div className={style.checkbox}>
-                                <span>{check()}</span>
-                            </div>
-                            <label htmlFor='draft'>Draft</label>
+                            <label htmlFor='draft'>
+                                <div className={style.checkbox}>
+                                    <span>{check()}</span>
+                                </div>
+                                Draft
+                            </label>
                         </div>
                         <div className={style.field}>
                             <input type='radio' id='pending' name='status' />
-                            <div className={style.checkbox}>
-                                <span>{check()}</span>
-                            </div>
-                            <label htmlFor='pending'>Pending</label>
+                            <label htmlFor='pending'>
+                                <div className={style.checkbox}>
+                                    <span>{check()}</span>
+                                </div>
+                                Pending
+                            </label>
                         </div>
                         <div className={style.field}>
                             <input type='radio' id='paid' name='status' />
-                            <div className={style.checkbox}>
-                                <span>{check()}</span>
-                            </div>
-                            <label htmlFor='paid'>Paid</label>
+                            <label htmlFor='paid'>
+                                <div className={style.checkbox}>
+                                    <span>{check()}</span>
+                                </div>
+                                Paid
+                            </label>
                         </div>
                     </div>
-                </label>
+                </div>
                 <button>
                     <div className={style.add}>
                         <span>+</span>

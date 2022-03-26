@@ -20,12 +20,17 @@ $br: 10px;
         align-items: center;
         .filter {
             display: flex;
-            width: 143px;
+            .filterText {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                cursor: pointer;
+                width: 143px;
+            }
             margin-right: 30px;
             align-items: center;
             justify-content: space-between;
             white-space: nowrap;
-            cursor: pointer;
             position: relative;
             .dialog {
                 display: none;
@@ -48,14 +53,16 @@ $br: 10px;
                         width: 50%;
                         label {
                             cursor: pointer;
+                            display: flex;
                         }
                         // width: fit-content;
                         input[type="radio"] {
                             // margin: 20px;
-                            // opacity: 0;
-                            // height: 0;
-                            // width: 0;
-                            &:checked ~ .checkbox {
+                            opacity: 0;
+                            height: 0;
+                            width: 0;
+
+                            &:checked ~ label .checkbox {
                                 background: #7c5dfa;
                                 span {
                                     display: block;
