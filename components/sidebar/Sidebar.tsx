@@ -6,7 +6,7 @@ import avatar from "./assets/image-avatar.jpg";
 import style from "./Sidebar.module.scss";
 
 export default function Sidebar(props) {
-    console.log(avatar);
+    const dark = true;
 
     return (
         <div className={style.sidebar}>
@@ -14,8 +14,8 @@ export default function Sidebar(props) {
 
             <div className={style.bottom}>
                 <div className={style.theme}>
-                    {moon()}
-                    {sun()}
+                    {!dark && moon()}
+                    {dark && sun()}
                 </div>
                 <div className={style.imgContainer}>
                     <img src={avatar.src} />
