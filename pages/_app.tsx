@@ -1,8 +1,14 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Sidebar from "../components/sidebar/Sidebar";
-import Header from "../components/header/Header";
+// import Header from "../componentsHomeHeaderHeader";
 import { useEffect, useState } from "react";
+
+String.prototype.capitialize = function () {
+    const first = this[0].toUpperCase();
+    const string = first + this.slice(1);
+    return string;
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [data, setData] = useState([]);
@@ -17,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className='layout'>
             <Sidebar />
             <main>
-                <Header data={data} />
+                {/* <Header data={data} /> */}
                 <Component {...pageProps} data={data} />
             </main>
         </div>

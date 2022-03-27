@@ -24,6 +24,7 @@ body {
         }
     }
     .ticket {
+        @include floatingCard("light");
         .ticket-off-1 {
             color: #858bb2;
         }
@@ -34,6 +35,13 @@ body {
             color: $draft-light;
             background-color: #{$draft-light + "13"};
             @include circle("draft-light");
+        }
+    }
+    .invoiceHeader {
+        @include floatingCard("light");
+        .edit {
+            @include button();
+            background-color: #dfe3fa;
         }
     }
 
@@ -54,8 +62,7 @@ body {
             }
         }
         .ticket {
-            color: white;
-            background-color: $card-bg-dark;
+            @include floatingCard("dark");
             .ticket-off-1.due {
                 color: #dfe3fa;
             }
@@ -67,6 +74,9 @@ body {
                 background-color: #{$draft-dark + "13"};
                 @include circle("draft-dark");
             }
+        }
+        .invoiceHeader {
+            @include floatingCard("dark");
         }
     }
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

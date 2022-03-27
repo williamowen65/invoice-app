@@ -1,5 +1,6 @@
 @import "./variables";
 .container {
+    overflow-x: initial;
     // padding: 0 2rem;
     // flex-grow: 0;
     height: calc(100vh - 209px);

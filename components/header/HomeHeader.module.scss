@@ -1,16 +1,8 @@
 @import "../../styles/variables";
-
-$blue: #7c5dfa;
-$br: 10px;
+@import "../../styles/mixins";
 
 .header {
-    margin: 36px 0;
-    @media #{$desktop} {
-        margin: 56px 0;
-    }
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include header();
     .pageinfo {
         h1 {
             margin: 0;
@@ -18,9 +10,6 @@ $br: 10px;
         }
     }
     .right {
-        display: flex;
-        // justify-content: center;
-        align-items: center;
         .filter {
             display: flex;
             .filterText {
@@ -118,38 +107,7 @@ $br: 10px;
             }
         }
         button {
-            cursor: pointer;
-            background-color: $blue;
-            border: none;
-            border-radius: 500px;
-            display: flex;
-            align-items: center;
-            width: 90px;
-            @media #{$tablet} {
-                width: 150px;
-            }
-            height: 48px;
-            .add {
-                color: $blue;
-                background-color: white;
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                font-weight: 900;
-                transform: translateX(2px);
-                span {
-                    transform: translateY(-1px);
-                }
-            }
-            .text {
-                flex-grow: 1;
-                text-align: center;
-                color: white;
-            }
+            @include button();
         }
     }
 }

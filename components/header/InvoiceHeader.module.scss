@@ -1,0 +1,20 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.header {
+    @include header();
+    padding: 24px;
+    button {
+        &.markPaid {
+            @include button();
+        }
+        &.delete {
+            @include button();
+            background-color: #ff9797;
+            width: 90px !important;
+        }
+        &.edit {
+            width: 60px !important;
+        }
+    }
+}

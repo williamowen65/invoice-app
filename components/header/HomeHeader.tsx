@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import style from "./Header.module.scss";
+import style from "./HomeHeader.module.scss";
 import arrow from "./assets/icon-arrow-down.svg";
 import check from "./assets/icon-check.svg";
 import Link from "next/link";
@@ -8,9 +8,6 @@ export default function Header({ data }) {
     const toggle = useRef(null);
 
     const handleToggle = () => {
-        let go = true;
-        let dialogPos;
-        console.log("hi");
         const el = toggle.current;
 
         if (el.hasAttribute("open")) {
@@ -75,17 +72,15 @@ export default function Header({ data }) {
                         </div>
                     </div>
                 </div>
-                <Link href='/create'>
-                    <button>
-                        <div className={style.add}>
-                            <span>+</span>
-                        </div>
-                        <div className={style.text}>
-                            New
-                            <span className='hideOnMobile'> Invoice</span>
-                        </div>
-                    </button>
-                </Link>
+                <button>
+                    <div className={style.add}>
+                        <span>+</span>
+                    </div>
+                    <div className={style.text}>
+                        New
+                        <span className='hideOnMobile'> Invoice</span>
+                    </div>
+                </button>
             </div>
         </header>
     );
