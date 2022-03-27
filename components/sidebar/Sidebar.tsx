@@ -4,6 +4,7 @@ import moon from "./assets/icon-moon.svg";
 import sun from "./assets/icon-sun.svg";
 import avatar from "./assets/image-avatar.jpg";
 import style from "./Sidebar.module.scss";
+import Link from "next/link";
 
 export default function Sidebar(props) {
     const [dark, setDark] = useState(false);
@@ -23,7 +24,9 @@ export default function Sidebar(props) {
 
     return (
         <div className={style.sidebar + " sidebar"}>
-            <div className={style.logo}>{logo()}</div>
+            <Link href='/'>
+                <div className={style.logo}>{logo()}</div>
+            </Link>
 
             <div className={style.bottom}>
                 <div className={style.theme} onClick={toggleDarkMode}>

@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from "react";
 import style from "./Header.module.scss";
 import arrow from "./assets/icon-arrow-down.svg";
 import check from "./assets/icon-check.svg";
+import Link from "next/link";
 
-export default function Header(props) {
+export default function Header({ data }) {
     const toggle = useRef(null);
 
     const handleToggle = () => {
@@ -24,9 +25,15 @@ export default function Header(props) {
             <div className={style.pageinfo}>
                 <h1>Invoices</h1>
                 <span className='sec-color'>
-                    <span className='hideOnMobile'>There are </span>
-                    {0} total
-                    <span className='hideOnMobile'> invoices</span>
+                    {data.length ? (
+                        <>
+                            <span className='hideOnMobile'>There are </span>
+                            {data.length} total
+                            <span className='hideOnMobile'> invoices</span>
+                        </>
+                    ) : (
+                        <span>No invoices</span>
+                    )}
                 </span>
             </div>
             <div className={style.right}>
@@ -68,15 +75,17 @@ export default function Header(props) {
                         </div>
                     </div>
                 </div>
-                <button>
-                    <div className={style.add}>
-                        <span>+</span>
-                    </div>
-                    <div className={style.text}>
-                        New
-                        <span className='hideOnMobile'> Invoice</span>
-                    </div>
-                </button>
+                <Link href='/create'>
+                    <button>
+                        <div className={style.add}>
+                            <span>+</span>
+                        </div>
+                        <div className={style.text}>
+                            New
+                            <span className='hideOnMobile'> Invoice</span>
+                        </div>
+                    </button>
+                </Link>
             </div>
         </header>
     );

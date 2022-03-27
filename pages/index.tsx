@@ -5,26 +5,28 @@ import styles from "../styles/Home.module.scss";
 import Ticket from "../components/ticket/Ticket";
 import { useEffect, useState } from "react";
 
-const Home: NextPage = () => {
-    const [data, setData] = useState(null);
+const Home: NextPage = ({ data }) => {
     const [tickets, setTickets] = useState([]);
-    useEffect(() => {
-        const data = fetch("/data.json");
-        data.then((res) => res.json()).then((res) => {
-            setData(res);
-        });
-    }, []);
 
     useEffect(() => {
-        console.log(data);
-
         const tickets = data?.map((ticket) => {
             return <Ticket data={ticket} key={ticket.id} />;
         });
         setTickets(tickets);
     }, [data]);
 
-    return <div className={styles.container}>{tickets}</div>;
+    return data.length ? (
+        <div className={styles.container}>{tickets}</div>
+    ) : (
+        <div className={styles.container + " " + styles.noInvoices}>
+            <img src='/assets/illustration-empty.svg' alt='' srcset='' />
+            <h2>There is nothing here</h2>
+            <p>
+                Create an invoice by clicking the New Invoice button and get
+                started
+            </p>
+        </div>
+    );
 };
 
 export default Home;

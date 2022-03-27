@@ -4,12 +4,21 @@
     // flex-grow: 0;
     height: calc(100vh - 209px);
     @media #{$desktop} {
-        height: calc(100vh - 174px);
+        height: calc(100vh - 176px);
     }
-    color: rgb(37, 37, 58);
     overflow-y: scroll;
     &::-webkit-scrollbar {
         display: none;
+    }
+    &.noInvoices {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        p {
+            width: 300px;
+            text-align: center;
+        }
     }
 }
 
