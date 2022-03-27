@@ -37,8 +37,9 @@ body {
         background-color: #{$draft-light + "13"};
         @include circle("draft-light");
     }
-    .invoiceHeader {
-        @include floatingCard("light");
+    .invoice {
+        @include card("light");
+        box-shadow: $shadow;
     }
     .edit {
         @include button();
@@ -80,8 +81,10 @@ body {
             background-color: #{$draft-dark + "13"};
             @include circle("draft-dark");
         }
-        .invoiceHeader {
-            @include floatingCard("dark");
+        .invoice {
+            @include card("dark");
+            background-color: $sidebar-bg-dark;
+            box-shadow: none;
         }
         .mobileFooter {
             @include card("dark");

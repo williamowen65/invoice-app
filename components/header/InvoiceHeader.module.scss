@@ -4,12 +4,14 @@
 .header {
     @include header();
     padding: 24px;
-
+    .statusText {
+        margin-right: 24px;
+    }
     .right {
         display: none;
         @media #{$tablet} {
             display: flex;
-            flex-grow: 2;
+            flex-grow: 1;
             justify-content: flex-end;
         }
     }
@@ -21,4 +23,12 @@
         margin: 0 5px;
         @include button();
     }
+}
+.goBack {
+    cursor: pointer;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 0;
 }
