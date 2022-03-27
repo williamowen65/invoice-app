@@ -1,0 +1,52 @@
+@import "./mixins";
+@import "./variables";
+.row {
+    display: flex;
+    justify-content: space-between;
+    .list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.invoice {
+    // @include card("light");
+    padding: 24px;
+    margin-bottom: 56px;
+    // overflow: hidden;
+    @media #{$tablet} {
+        padding: 32px;
+    }
+    .invoiceSummary {
+        border-radius: 8px !important;
+        overflow: hidden;
+        margin: 40px 0 24px;
+        > * {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 24px;
+            table {
+                width: 100%;
+                th {
+                    text-align: left;
+                }
+            }
+        }
+        .items {
+            padding: 24px;
+        }
+        .summary {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        // @include card("light");
+        // border-radius: 200px !important;
+        // .tr {
+        //     width: 100%;
+        // }
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        // align-items: stretch;
+    }
+}

@@ -51,6 +51,16 @@ body {
         padding: 21px 24px;
     }
 
+    .invoiceSummary {
+        .items {
+            background-color: $main-bg-light;
+        }
+        .summary {
+            background-color: $sidebar-bg-light;
+            color: white;
+        }
+    }
+
     &.dark-mode {
         color: $main-pri-color-dark;
         .sec-color {
@@ -81,13 +91,22 @@ body {
             background-color: #{$draft-dark + "13"};
             @include circle("draft-dark");
         }
+        .mobileFooter {
+            @include card("dark");
+        }
         .invoice {
             @include card("dark");
             background-color: $sidebar-bg-dark;
             box-shadow: none;
-        }
-        .mobileFooter {
-            @include card("dark");
+            .invoiceSummary {
+                .items {
+                    background-color: $card-bg-dark;
+                }
+                .summary {
+                    background-color: $main-bg-dark;
+                    color: white;
+                }
+            }
         }
     }
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
