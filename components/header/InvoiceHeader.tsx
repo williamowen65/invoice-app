@@ -20,24 +20,18 @@ export default function InvoiceHeader({ data }) {
 
     return (
         <header className={style.header + " invoiceHeader"}>
-            <div>
-                <span>Status</span>
-                <span className={style.status}>
-                    {status && (
-                        <span
-                            className={
-                                style.status +
-                                " " +
-                                style[status] +
-                                " " +
-                                status
-                            }
-                        >
-                            {status.capitialize()}
-                        </span>
-                    )}
-                </span>
-            </div>
+            <span>Status </span>
+            <span className={style.status}>
+                {status && (
+                    <span
+                        className={
+                            style.status + " " + style[status] + " " + status
+                        }
+                    >
+                        {status.capitialize()}
+                    </span>
+                )}
+            </span>
             <div className={style.right}>
                 <InvoiceBtns />
             </div>

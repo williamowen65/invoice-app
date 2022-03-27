@@ -9,6 +9,8 @@
         display: none;
         @media #{$tablet} {
             display: flex;
+            flex-grow: 2;
+            justify-content: flex-end;
         }
     }
 }
