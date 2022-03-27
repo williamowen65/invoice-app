@@ -61,6 +61,7 @@ $br: 10px;
                     border-radius: $br;
                     width: 192px;
                     height: 128px;
+                    z-index: 1;
                     padding: 14px;
                     .field {
                         display: flex;
