@@ -12,6 +12,7 @@
         flex-direction: column;
         height: 100vh;
         width: $sidebar-width-desktop;
+        position: fixed;
     }
     .logo {
         border-radius: 0 $sidebar-borderRadius $sidebar-borderRadius 0;
