@@ -36,6 +36,11 @@
     padding: 24px;
     margin-bottom: 56px;
     // overflow: hidden;
+    // height: calc(100vh - 277px);
+    // overflow-y: scroll;
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
     @media #{$tablet} {
         padding: 32px;
     }
@@ -51,6 +56,22 @@
                 width: 100%;
                 th {
                     text-align: left;
+                }
+            }
+            .itemsMobile {
+                flex-direction: column;
+                > * {
+                    margin-bottom: 20px;
+                }
+            }
+            .mobileItem {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                .left {
+                    display: flex;
+                    flex-direction: column;
                 }
             }
         }

@@ -14,12 +14,13 @@ export default function Invoice({ data }) {
         }
     }, [doc]);
 
-    const [items, setItems] = useState([]);
+    const [itemsTable, setItemsTable] = useState([]);
+    const [itemsMobile, setItemsMobile] = useState([]);
 
     useEffect(() => {
         console.log(invoice);
 
-        const items = invoice?.items.map((el) => {
+        const itemsTable = invoice?.items.map((el) => {
             return (
                 <tr>
                     <td>{el.name}</td>
@@ -29,7 +30,23 @@ export default function Invoice({ data }) {
                 </tr>
             );
         });
-        setItems(items);
+
+        const itemsMobile = invoice?.items.map((el) => {
+            return (
+                <div className={style.mobileItem}>
+                    <div className={style.left}>
+                        <span>{el.name}</span>
+                        <span className='title'>
+                            {el.quantity} x £ {el.price}
+                        </span>
+                    </div>
+                    <div className='right'>£ {el.total}</div>
+                </div>
+            );
+        });
+
+        setItemsTable(itemsTable);
+        setItemsMobile(itemsMobile);
     }, [invoice]);
 
     return (
@@ -125,15 +142,20 @@ export default function Invoice({ data }) {
                     </div>
                     <div className={style.invoiceSummary + " invoiceSummary"}>
                         <div className={style.items + " items"}>
-                            <table>
+                            <table className='hideOnMobile'>
                                 <tr>
                                     <th>Item Name</th>
                                     <th>QTY.</th>
                                     <th>Price</th>
                                     <th>Total</th>
                                 </tr>
-                                {items}
+                                {itemsTable}
                             </table>
+                            <div
+                                className={style.itemsMobile + " onlyOnMobile"}
+                            >
+                                {itemsMobile}
+                            </div>
                         </div>
                         <div className={style.summary + " summary"}>
                             <span className='hideOnMobile'>Amount Due</span>
