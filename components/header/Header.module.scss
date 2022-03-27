@@ -4,7 +4,10 @@ $blue: #7c5dfa;
 $br: 10px;
 
 .header {
-    margin: 56px 0;
+    margin: 36px 0;
+    @media #{$desktop} {
+        margin: 56px 0;
+    }
     display: flex;
     align-items: center;
     justify-content: space-between;
