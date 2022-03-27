@@ -19,3 +19,66 @@
         }
     }
 }
+
+@mixin floatingCard($mode) {
+    $br: 8px;
+    box-shadow: 0px 10px 10px #48549f1e;
+    border-radius: $br;
+    @if ($mode == "light") {
+        background: white;
+    }
+    @if ($mode == "dark") {
+        color: white;
+        background-color: $card-bg-dark;
+    }
+}
+
+@mixin button() {
+    cursor: pointer;
+    background-color: $blue;
+    border: none;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    @media #{$tablet} {
+        width: 150px;
+    }
+    height: 48px;
+    .add {
+        color: $blue;
+        background-color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 900;
+        transform: translateX(2px);
+        span {
+            transform: translateY(-1px);
+        }
+    }
+    .text {
+        flex-grow: 1;
+        text-align: center;
+        color: white;
+    }
+}
+
+@mixin header() {
+    margin: 36px 0;
+    @media #{$desktop} {
+        margin: 56px 0;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .right {
+        display: flex;
+        align-items: center;
+    }
+}
