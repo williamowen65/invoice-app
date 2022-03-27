@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./mixins";
+@import "./invoice_variables.scss";
 
 html,
 body {
@@ -50,14 +51,20 @@ body {
         justify-content: space-around;
         padding: 21px 24px;
     }
-
-    .invoiceSummary {
-        .items {
-            background-color: $main-bg-light;
+    .invoice {
+        .address,
+        .title,
+        .description {
+            color: $second-color-light;
         }
-        .summary {
-            background-color: $sidebar-bg-light;
-            color: white;
+        .invoiceSummary {
+            .items {
+                background-color: $main-bg-light;
+            }
+            .summary {
+                background-color: $sidebar-bg-light;
+                color: white;
+            }
         }
     }
 
@@ -98,6 +105,11 @@ body {
             @include card("dark");
             background-color: $sidebar-bg-dark;
             box-shadow: none;
+            .address,
+            .title,
+            .description {
+                color: $second-color-dark;
+            }
             .invoiceSummary {
                 .items {
                     background-color: $card-bg-dark;

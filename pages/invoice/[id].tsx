@@ -38,11 +38,22 @@ export default function Invoice({ data }) {
                 <InvoiceHeader data={invoice} />
                 <div className={style.invoice + " invoice"}>
                     <div className={style.row}>
-                        <div className={style.list}>
-                            <span>#{invoice.id}</span>
-                            <span>{invoice.description}</span>
+                        <div className={style.list + " id"}>
+                            <span className={style.id}>
+                                <span className='title'># </span>
+                                {invoice.id}
+                            </span>
+                            <span
+                                className={style.description + " description"}
+                            >
+                                {invoice.description}
+                            </span>
                         </div>
-                        <div className={style.list}>
+                        <div
+                            className={
+                                style.list + " " + style.address + " address"
+                            }
+                        >
                             <span>{invoice.senderAddress.street}</span>
                             <span>{invoice.senderAddress.city}</span>
                             <span>{invoice.senderAddress.postCode}</span>
@@ -50,28 +61,66 @@ export default function Invoice({ data }) {
                         </div>
                     </div>
                     <div className={style.row}>
-                        <div className={style.list + " dates"}>
-                            <span className='createdAt'>
-                                <span>Invoice Date</span>
-                                <span>{invoice.createdAt}</span>
-                            </span>
-                            <span className={style.list + " due"}>
-                                <span>Payment Due</span>
-                                <span>{invoice.paymentDue}</span>
-                            </span>
-                        </div>
-                        <div className={style.list + " billTo"}>
-                            <span className='client'>{invoice.clientName}</span>
-                            <span className={style.list + " address"}>
-                                <span>{invoice.clientAddress.street}</span>
-                                <span>{invoice.clientAddress.city}</span>
-                                <span>{invoice.clientAddress.postCode}</span>
-                                <span>{invoice.clientAddress.country}</span>
-                            </span>
+                        <div className={style.innerRow}>
+                            <div className={style.list + " dates"}>
+                                <span className={style.list + " createdAt"}>
+                                    <span className={style.title + " title"}>
+                                        Invoice Date
+                                    </span>
+                                    <span>{invoice.createdAt}</span>
+                                </span>
+                                <span className={style.list + " due"}>
+                                    <span className={style.title + " title"}>
+                                        Payment Due
+                                    </span>
+                                    <span>{invoice.paymentDue}</span>
+                                </span>
+                            </div>
+                            <div className={style.list + " billTo"}>
+                                <span className={style.title + " title"}>
+                                    Bill To
+                                </span>
+                                <span className={style.clientName + " client"}>
+                                    {invoice.clientName}
+                                </span>
+                                <span
+                                    className={
+                                        style.list +
+                                        " " +
+                                        style.address +
+                                        " address"
+                                    }
+                                >
+                                    {invoice.clientAddress.street ? (
+                                        <>
+                                            <span>
+                                                {invoice.clientAddress.street}
+                                            </span>
+                                            <span>
+                                                {invoice.clientAddress.city}
+                                            </span>
+                                            <span>
+                                                {invoice.clientAddress.postCode}
+                                            </span>
+                                            <span>
+                                                {invoice.clientAddress.country}
+                                            </span>
+                                        </>
+                                    ) : (
+                                        <span>[missing address data]</span>
+                                    )}
+                                </span>
+                            </div>
                         </div>
                         <div className={style.list + " sentTo"}>
-                            <span>Sent to</span>
-                            <span>{invoice.clientEmail}</span>
+                            <span className={style.title + " title"}>
+                                Sent to
+                            </span>
+                            {invoice.clientEmail ? (
+                                <span>{invoice.clientEmail}</span>
+                            ) : (
+                                <span>[missing customer email]</span>
+                            )}
                         </div>
                     </div>
                     <div className={style.invoiceSummary + " invoiceSummary"}>
@@ -87,7 +136,8 @@ export default function Invoice({ data }) {
                             </table>
                         </div>
                         <div className={style.summary + " summary"}>
-                            <span>Amount Due</span>
+                            <span className='hideOnMobile'>Amount Due</span>
+                            <span className='onlyOnMobile'>Grand Total</span>
                             <span>£ {invoice.total}</span>
                         </div>
                     </div>
