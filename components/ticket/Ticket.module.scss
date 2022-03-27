@@ -30,31 +30,7 @@
     .id {
         grid-area: id;
     }
-    .status {
-        grid-area: status;
-        width: 104px;
-        height: 40px;
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &.paid {
-            color: $paid;
-            background-color: #{$paid + "13"};
-            @include circle("paid");
-        }
-        &.pending {
-            color: $pending;
-            background-color: #{$pending + "13"};
-            @include circle("pending");
-        }
-        /*Draft defined in global because of dark mode needs*/
-        // &.draft {
-        //     color: $draft-light;
-        //     background-color: #{$draft-light + "13"};
-        //     @include circle("draft");
-        // }
-    }
+    @include statusBox();
     .due {
         grid-area: due;
         align-self: flex-end;

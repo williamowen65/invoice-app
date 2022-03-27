@@ -31,11 +31,11 @@ body {
         .ticket-off-2 {
             color: #7e88c3;
         }
-        .draft {
-            color: $draft-light;
-            background-color: #{$draft-light + "13"};
-            @include circle("draft-light");
-        }
+    }
+    .draft {
+        color: $draft-light;
+        background-color: #{$draft-light + "13"};
+        @include circle("draft-light");
     }
     .invoiceHeader {
         @include floatingCard("light");
@@ -74,11 +74,11 @@ body {
             .ticket-off-2 {
                 color: #ffffff;
             }
-            .draft {
-                color: $draft-dark;
-                background-color: #{$draft-dark + "13"};
-                @include circle("draft-dark");
-            }
+        }
+        .draft {
+            color: $draft-dark;
+            background-color: #{$draft-dark + "13"};
+            @include circle("draft-dark");
         }
         .invoiceHeader {
             @include floatingCard("dark");
