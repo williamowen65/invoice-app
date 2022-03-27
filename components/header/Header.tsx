@@ -74,7 +74,7 @@ export default function Header(props) {
                     </div>
                     <div className={style.text}>
                         New
-                        <span className='hideOnMobile'>Invoice</span>
+                        <span className='hideOnMobile'> Invoice</span>
                     </div>
                 </button>
             </div>

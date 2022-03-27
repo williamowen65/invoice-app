@@ -22,6 +22,13 @@ body {
             background-color: $checkbox-bg-light;
         }
     }
+    .ticket-off-1 {
+        color: #858bb2;
+    }
+    .ticket-off-2 {
+        color: #7e88c3;
+    }
+
     &.dark-mode {
         color: $main-pri-color-dark;
         .sec-color {
@@ -36,6 +43,16 @@ body {
             box-shadow: 0 10px 20px #0000003b;
             .checkbox {
                 background-color: $checkbox-bg-dark;
+            }
+        }
+        .ticket {
+            color: white;
+            background-color: $card-bg-dark;
+            .ticket-off-1.due {
+                color: #dfe3fa;
+            }
+            .ticket-off-2 {
+                color: #ffffff;
             }
         }
     }
@@ -75,11 +92,4 @@ a {
     @media #{$tablet} {
         display: initial;
     }
-}
-
-.ticket-off-1 {
-    color: #858bb2;
-}
-.ticket-off-2 {
-    color: #7e88c3;
 }
