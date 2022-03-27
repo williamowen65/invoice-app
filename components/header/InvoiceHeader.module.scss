@@ -4,17 +4,18 @@
 .header {
     @include header();
     padding: 24px;
+
+    .right {
+        display: none;
+        @media #{$tablet} {
+            display: flex;
+        }
+    }
+}
+.btns {
+    display: flex;
     button {
-        &.markPaid {
-            @include button();
-        }
-        &.delete {
-            @include button();
-            background-color: #ff9797;
-            width: 90px !important;
-        }
-        &.edit {
-            width: 60px !important;
-        }
+        margin: 0 5px;
+        @include button();
     }
 }

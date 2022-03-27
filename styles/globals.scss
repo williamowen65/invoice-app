@@ -39,10 +39,15 @@ body {
     }
     .invoiceHeader {
         @include floatingCard("light");
-        .edit {
-            @include button();
-            background-color: #dfe3fa;
-        }
+    }
+    .edit {
+        @include button();
+        background-color: #dfe3fa;
+    }
+    .mobileFooter {
+        @include card("light");
+        justify-content: space-around;
+        padding: 21px 24px;
     }
 
     &.dark-mode {
@@ -77,6 +82,9 @@ body {
         }
         .invoiceHeader {
             @include floatingCard("dark");
+        }
+        .mobileFooter {
+            @include card("dark");
         }
     }
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -114,5 +122,11 @@ a {
     display: none;
     @media #{$tablet} {
         display: initial;
+    }
+}
+.onlyOnMobile {
+    display: flex;
+    @media #{$tablet} {
+        display: none;
     }
 }

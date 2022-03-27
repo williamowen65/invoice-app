@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import Sidebar from "../components/sidebar/Sidebar";
 // import Header from "../componentsHomeHeaderHeader";
 import { useEffect, useState } from "react";
+import InvoiceBtns from "../components/header/components/InvoiceBtns";
+import { useRouter } from "next/router";
 
 String.prototype.capitialize = function () {
     const first = this[0].toUpperCase();
@@ -11,6 +13,7 @@ String.prototype.capitialize = function () {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const router = useRouter();
     const [data, setData] = useState([]);
     useEffect(() => {
         const data = fetch("/data.json");
@@ -26,6 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 {/* <Header data={data} /> */}
                 <Component {...pageProps} data={data} />
             </main>
+            {router.pathname == "/invoice/[id]" && (
+                <div className='onlyOnMobile mobileFooter'>
+                    <InvoiceBtns />
+                </div>
+            )}
         </div>
     );
 }
