@@ -42,7 +42,7 @@ export default function Header(props) {
                         <div className={style.field}>
                             <input type='radio' id='draft' name='status' />
                             <label htmlFor='draft'>
-                                <div className={style.checkbox}>
+                                <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>
                                 </div>
                                 Draft
@@ -51,7 +51,7 @@ export default function Header(props) {
                         <div className={style.field}>
                             <input type='radio' id='pending' name='status' />
                             <label htmlFor='pending'>
-                                <div className={style.checkbox}>
+                                <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>
                                 </div>
                                 Pending
@@ -60,7 +60,7 @@ export default function Header(props) {
                         <div className={style.field}>
                             <input type='radio' id='paid' name='status' />
                             <label htmlFor='paid'>
-                                <div className={style.checkbox}>
+                                <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>
                                 </div>
                                 Paid

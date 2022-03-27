@@ -1,6 +1,16 @@
+@import "./variables";
 .container {
-    padding: 0 2rem;
+    // padding: 0 2rem;
+    // flex-grow: 0;
+    height: calc(100vh - 238px);
+    @media #{$desktop} {
+        height: calc(100vh - 174px);
+    }
     color: rgb(37, 37, 58);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .main {

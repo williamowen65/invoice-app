@@ -59,14 +59,6 @@ $br: 10px;
                     width: 192px;
                     height: 128px;
                     padding: 14px;
-                    @media (prefers-color-scheme: light) {
-                        background: $card-bg-light;
-                        box-shadow: 0 10px 20px #48549f3f;
-                    }
-                    @media (prefers-color-scheme: dark) {
-                        background: $card-bg-dark;
-                        box-shadow: 0 10px 20px #0000003b;
-                    }
                     .field {
                         display: flex;
                         cursor: pointer;
@@ -79,12 +71,12 @@ $br: 10px;
                             .checkbox {
                                 min-width: 16px;
                                 height: 16px;
-                                @media (prefers-color-scheme: light) {
-                                    background-color: $checkbox-bg-light;
-                                }
-                                @media (prefers-color-scheme: dark) {
-                                    background-color: $checkbox-bg-dark;
-                                }
+                                // @media (prefers-color-scheme: light) {
+                                //     background-color: $checkbox-bg-light;
+                                // }
+                                // @media (prefers-color-scheme: dark) {
+                                //     background-color: $checkbox-bg-dark;
+                                // }
                                 // border: 1px solid #7c5dfa;
                                 margin-right: 10px;
                                 border-radius: 2px;
