@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./mixins";
 
 html,
 body {
@@ -22,11 +23,18 @@ body {
             background-color: $checkbox-bg-light;
         }
     }
-    .ticket-off-1 {
-        color: #858bb2;
-    }
-    .ticket-off-2 {
-        color: #7e88c3;
+    .ticket {
+        .ticket-off-1 {
+            color: #858bb2;
+        }
+        .ticket-off-2 {
+            color: #7e88c3;
+        }
+        .draft {
+            color: $draft-light;
+            background-color: #{$draft-light + "13"};
+            @include circle("draft-light");
+        }
     }
 
     &.dark-mode {
@@ -55,7 +63,9 @@ body {
                 color: #ffffff;
             }
             .draft {
-                color: #dfe3fa !important;
+                color: $draft-dark;
+                background-color: #{$draft-dark + "13"};
+                @include circle("draft-dark");
             }
         }
     }

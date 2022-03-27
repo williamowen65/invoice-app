@@ -1,0 +1,21 @@
+@mixin circle($type) {
+    &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        transform: translate(-8px, 2px);
+        @if ($type == "paid") {
+            background-color: $paid;
+        }
+        @if ($type == "pending") {
+            background-color: $pending;
+        }
+        @if ($type == "draft-light") {
+            background-color: $draft-light;
+        }
+        @if ($type == "draft-dark") {
+            background-color: $draft-dark;
+        }
+    }
+}

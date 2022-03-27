@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 $br: 8px;
 
@@ -28,24 +29,6 @@ $br: 8px;
         grid-area: id;
     }
     .status {
-        @mixin circle($type) {
-            &::before {
-                content: "";
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                transform: translate(-8px, 2px);
-                @if ($type == "paid") {
-                    background-color: $paid;
-                }
-                @if ($type == "pending") {
-                    background-color: $pending;
-                }
-                @if ($type == "draft") {
-                    background-color: $draft;
-                }
-            }
-        }
         grid-area: status;
         width: 104px;
         height: 40px;
@@ -63,11 +46,12 @@ $br: 8px;
             background-color: #{$pending + "13"};
             @include circle("pending");
         }
-        &.draft {
-            color: $draft;
-            background-color: #{$draft + "13"};
-            @include circle("draft");
-        }
+        /*Draft defined in global because of dark mode needs*/
+        // &.draft {
+        //     color: $draft-light;
+        //     background-color: #{$draft-light + "13"};
+        //     @include circle("draft");
+        // }
     }
     .due {
         grid-area: due;
