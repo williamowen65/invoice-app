@@ -55,7 +55,7 @@ export default function Invoice({ data }) {
                 <InvoiceHeader data={invoice} />
                 <div className={style.invoice + " invoice"}>
                     <div className={style.row}>
-                        <div className={style.list + " id"}>
+                        <div className={style.list + " id " + style.id}>
                             <span className={style.id}>
                                 <span className='title'># </span>
                                 {invoice.id}
@@ -129,7 +129,11 @@ export default function Invoice({ data }) {
                                 </span>
                             </div>
                         </div>
-                        <div className={style.list + " sentTo"}>
+                        <div
+                            className={
+                                style.list + " sentTo" + " " + style.sentTo
+                            }
+                        >
                             <span className={style.title + " title"}>
                                 Sent to
                             </span>

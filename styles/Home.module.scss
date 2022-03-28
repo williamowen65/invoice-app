@@ -3,9 +3,9 @@
     overflow-x: initial;
     // padding: 0 2rem;
     // flex-grow: 0;
-    height: calc(100vh - 209px);
+    height: calc(100vh - 204px);
     @media #{$desktop} {
-        height: calc(100vh - 176px);
+        height: calc(100vh - 142px);
     }
     overflow-y: scroll;
     &::-webkit-scrollbar {

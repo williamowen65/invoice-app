@@ -25,7 +25,9 @@
     .list {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        &:not(.sentTo, .id) {
+            justify-content: space-between;
+        }
         white-space: nowrap;
     }
 }
@@ -114,5 +116,8 @@
     .description,
     .id {
         font-size: #{$fs * 1.2}px !important;
+    }
+    .description {
+        margin-top: 10px;
     }
 }

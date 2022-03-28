@@ -143,7 +143,7 @@ a {
     }
     main {
         flex-grow: 2;
-        max-width: 730px;
+        max-width: 800px;
         width: 100%;
         margin: 0 auto;
         padding: 0 20px;
@@ -152,7 +152,7 @@ a {
         padding-top: $sidebar-width-desktop;
         @media #{$desktop} {
             padding-top: 42px;
-            padding-left: $sidebar-width-desktop;
+            padding-left: #{$sidebar-width-desktop + 20px};
         }
     }
 }

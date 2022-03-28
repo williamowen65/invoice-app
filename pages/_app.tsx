@@ -12,6 +12,29 @@ String.prototype.capitialize = function () {
     return string;
 };
 
+const modifyDate = (arg) => {
+    const month = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+    let date = new Date(Date.parse(arg));
+    const mo = month[date.getMonth()];
+    const day = date.getDay() + 1;
+    const yr = date.getFullYear();
+
+    return `${mo} ${day} ${yr}`;
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const [data, setData] = useState([]);
@@ -19,28 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         const data = fetch("/data.json");
         data.then((res) => res.json()).then((res) => {
             res = res.map((el) => {
-                const month = [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                ];
-                let date = new Date(Date.parse(el.paymentDue));
-                const mo = month[date.getMonth()];
-                const day = date.getDay();
-                const yr = date.getFullYear();
-                // const dayYr = date.slice(4);
-
-                console.log(mo, day, yr);
-                el.paymentDue = `${mo} ${day} ${yr}`;
+                el.paymentDue = modifyDate(el.paymentDue);
+                el.createdAt = modifyDate(el.createdAt);
                 return el;
             });
             setData(res);
