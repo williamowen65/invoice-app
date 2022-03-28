@@ -1,6 +1,7 @@
 @mixin circle($type) {
     &::before {
         content: "";
+        z-index: 0;
         width: 8px;
         height: 8px;
         border-radius: 50%;
@@ -114,9 +115,9 @@
 }
 
 @mixin header() {
-    margin: 36px 0;
+    margin: 0px 0 36px;
     @media #{$desktop} {
-        margin: 56px 0;
+        // margin: 5px 0;
     }
     display: flex;
     align-items: center;

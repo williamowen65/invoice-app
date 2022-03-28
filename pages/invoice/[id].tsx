@@ -160,7 +160,9 @@ export default function Invoice({ data }) {
                         <div className={style.summary + " summary"}>
                             <span className='hideOnMobile'>Amount Due</span>
                             <span className='onlyOnMobile'>Grand Total</span>
-                            <span>£ {invoice.total}</span>
+                            <span className={style.total}>
+                                £ {invoice.total}
+                            </span>
                         </div>
                     </div>
                 </div>

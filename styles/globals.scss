@@ -149,7 +149,9 @@ a {
         padding: 0 20px;
         display: flex;
         flex-direction: column;
+        padding-top: $sidebar-width-desktop;
         @media #{$desktop} {
+            padding-top: 42px;
             padding-left: $sidebar-width-desktop;
         }
     }
