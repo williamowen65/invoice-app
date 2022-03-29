@@ -23,7 +23,7 @@ export default function Invoice({ state, functions }) {
         const itemsTable = invoice?.items.map((el) => {
             return (
                 <tr>
-                    <td>{el.name}</td>
+                    <td className={style.first}>{el.name}</td>
                     <td>{el.quantity}</td>
                     <td>£ {el.price}</td>
                     <td>£ {el.total}</td>
@@ -158,7 +158,7 @@ export default function Invoice({ state, functions }) {
                         <div className={style.items + " items"}>
                             <table className='hideOnMobile'>
                                 <tr>
-                                    <th>Item Name</th>
+                                    <th className={style.first}>Item Name</th>
                                     <th>QTY.</th>
                                     <th>Price</th>
                                     <th>Total</th>

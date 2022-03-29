@@ -171,8 +171,20 @@ a {
     }
 }
 .backdrop {
+    // all: initial;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.507);
     position: absolute;
+    cursor: default;
+    &.transparent {
+        background: transparent;
+        z-index: -1;
+        left: -50vw;
+        top: -182px;
+        @media #{$desktop} {
+            left: -60vw;
+            top: -124px;
+        }
+    }
 }

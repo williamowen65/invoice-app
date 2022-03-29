@@ -61,10 +61,12 @@
                 flex-direction: column;
                 width: 100%;
                 tr {
-                    width: 122%;
+                    width: 100%;
                     display: grid;
+                    text-align: end;
                     grid-template-columns: 1fr 1fr 1fr 1fr;
-                    th {
+                    th.first,
+                    td.first {
                         text-align: left;
                     }
                 }

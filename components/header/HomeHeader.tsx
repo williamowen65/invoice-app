@@ -43,6 +43,11 @@ export default function Header({ data }) {
                         <span className={style.arrow}>{arrow()}</span>
                     </label>
                     <div className={style.dialog + " dialog"}>
+                        <div
+                            className='backdrop transparent'
+                            onClick={handleToggle}
+                        ></div>
+
                         <div className={style.field}>
                             <input type='radio' id='draft' name='status' />
                             <label htmlFor='draft'>

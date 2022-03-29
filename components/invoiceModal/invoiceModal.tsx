@@ -5,12 +5,14 @@ import style from "./InvoiceModal.module.scss";
 export default function InvoiceModal({ functions }) {
     return (
         <>
-            <div className='backdrop'></div>
+            <div className='backdrop' onClick={functions.toggleEditMode}></div>
             <div className={style.invoiceModal}>
-                <span onClick={functions.toggleEditMode}>
-                    <GoBack />
-                </span>
-                <div>New Invoice</div>
+                <form className={style.container}>
+                    <span onClick={functions.toggleEditMode}>
+                        <GoBack />
+                    </span>
+                    <div>New Invoice</div>
+                </form>
             </div>
         </>
     );
