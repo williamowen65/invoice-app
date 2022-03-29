@@ -56,13 +56,14 @@
             padding: 0 24px;
             table {
                 @media #{$tablet} {
-                    display: flex;
+                    // display: flex;
                 }
                 flex-direction: column;
                 width: 100%;
                 tr {
-                    display: flex;
-                    justify-content: space-between;
+                    width: 122%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
                     th {
                         text-align: left;
                     }
