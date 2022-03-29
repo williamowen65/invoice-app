@@ -177,9 +177,10 @@ a {
     background-color: rgba(0, 0, 0, 0.507);
     position: absolute;
     cursor: default;
+    z-index: 1;
     &.transparent {
-        background: transparent;
         z-index: -1;
+        background: transparent;
         left: -50vw;
         top: -182px;
         @media #{$desktop} {
