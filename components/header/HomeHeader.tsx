@@ -4,8 +4,9 @@ import arrow from "./assets/icon-arrow-down.svg";
 import check from "./assets/icon-check.svg";
 import Link from "next/link";
 
-export default function Header({ data }) {
+export default function Header({ data, functions }) {
     const toggle = useRef(null);
+    console.log(functions);
 
     const handleToggle = () => {
         const el = toggle.current;
@@ -77,7 +78,7 @@ export default function Header({ data }) {
                         </div>
                     </div>
                 </div>
-                <button>
+                <button onClick={functions?.toggleNewMode}>
                     <div className={style.add}>
                         <span>+</span>
                     </div>

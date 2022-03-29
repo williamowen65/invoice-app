@@ -6,7 +6,7 @@ import Ticket from "../components/ticket/Ticket";
 import { useEffect, useState } from "react";
 import HomeHeader from "../components/header/HomeHeader";
 
-const Home: NextPage = ({ state }) => {
+const Home: NextPage = ({ state, functions }) => {
     const [tickets, setTickets] = useState([]);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Home: NextPage = ({ state }) => {
 
     return (
         <>
-            <HomeHeader data={state?.data} />
+            <HomeHeader data={state?.data} functions={functions} />
             {state?.data.length ? (
                 <div className={styles.container}>{tickets}</div>
             ) : (

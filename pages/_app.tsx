@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const [state, setState] = useState({
         data: [],
         editing: false,
+        new: false,
     });
 
     useEffect(() => {
@@ -43,12 +44,22 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
     };
 
+    functions.toggleNewMode = () => {
+        console.log("hi");
+
+        setState({
+            ...state,
+            new: !state.new,
+        });
+    };
+
     return (
         <div className='layout'>
             <Sidebar />
-            {state.editing && <InvoiceModal functions={functions} />}
+            {(state.editing || state.new) && (
+                <InvoiceModal functions={functions} state={state} />
+            )}
             <main>
-                {/* <Header data={data} /> */}
                 <Component {...pageProps} state={state} functions={functions} />
             </main>
             {router.pathname == "/invoice/[id]" && (
