@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import InvoiceHeader from "../../components/header/InvoiceHeader";
 import style from "../../styles/Invoice.module.scss";
 
-export default function Invoice({ data }) {
+export default function Invoice({ state, functions }) {
     const router = useRouter();
     const { id } = router.query;
-    const doc = data.find((el) => el.id === id);
+    const doc = state.data.find((el) => el.id === id);
     const [invoice, setInvoice] = useState(null);
     useEffect(() => {
         if (doc) {
@@ -18,7 +18,7 @@ export default function Invoice({ data }) {
     const [itemsMobile, setItemsMobile] = useState([]);
 
     useEffect(() => {
-        console.log(invoice);
+        // console.log(invoice);
 
         const itemsTable = invoice?.items.map((el) => {
             return (
@@ -52,7 +52,7 @@ export default function Invoice({ data }) {
     return (
         invoice && (
             <>
-                <InvoiceHeader data={invoice} />
+                <InvoiceHeader data={invoice} functions={functions} />
                 <div className={style.invoice + " invoice"}>
                     <div className={style.row}>
                         <div className={style.list + " id " + style.id}>

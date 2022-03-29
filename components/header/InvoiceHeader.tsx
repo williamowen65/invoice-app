@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import style from "./InvoiceHeader.module.scss";
 import InvoiceBtns from "./components/InvoiceBtns";
-import arrow from "./assets/icon-arrow-left.svg";
 import Link from "next/link";
+import GoBack from "./components/GoBack";
 
-export default function InvoiceHeader({ data }) {
+export default function InvoiceHeader({ data, functions }) {
     const [status, setStatus] = useState(data.status);
 
     return (
         <>
-            <Link href='/'>
-                <span className={style.goBack}>
-                    {arrow()}
-                    <span>Go Back</span>
-                </span>
-            </Link>
+            <GoBack />
             <header className={style.header + " invoice"}>
                 <span className={style.statusText}>Status </span>
                 <span className={style.status}>
@@ -34,7 +29,7 @@ export default function InvoiceHeader({ data }) {
                     )}
                 </span>
                 <div className={style.right}>
-                    <InvoiceBtns />
+                    <InvoiceBtns functions={functions} />
                 </div>
             </header>
         </>

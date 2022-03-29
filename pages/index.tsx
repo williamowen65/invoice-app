@@ -6,20 +6,20 @@ import Ticket from "../components/ticket/Ticket";
 import { useEffect, useState } from "react";
 import HomeHeader from "../components/header/HomeHeader";
 
-const Home: NextPage = ({ data }) => {
+const Home: NextPage = ({ state }) => {
     const [tickets, setTickets] = useState([]);
 
     useEffect(() => {
-        const tickets = data?.map((ticket) => {
+        const tickets = state.data?.map((ticket) => {
             return <Ticket data={ticket} key={ticket.id} />;
         });
         setTickets(tickets);
-    }, [data]);
+    }, [state]);
 
     return (
         <>
-            <HomeHeader data={data} />
-            {data.length ? (
+            <HomeHeader data={state?.data} />
+            {state?.data.length ? (
                 <div className={styles.container}>{tickets}</div>
             ) : (
                 <div className={styles.container + " " + styles.noInvoices}>

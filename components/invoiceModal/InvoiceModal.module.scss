@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+
+.invoiceModal {
+    background: white;
+    position: absolute;
+    height: 100%;
+    margin-top: $sidebar-width;
+    width: 100vw;
+    @media #{$tablet} {
+        width: 616px;
+        border-radius: 0 $sidebar-borderRadius $sidebar-borderRadius 0;
+    }
+    @media #{$desktop} {
+        padding-left: $sidebar-width-desktop;
+        margin-top: 0;
+    }
+}

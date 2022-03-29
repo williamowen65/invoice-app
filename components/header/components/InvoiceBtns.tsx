@@ -1,10 +1,13 @@
 import React from "react";
 import style from "../InvoiceHeader.module.scss";
 
-export default function InvoiceBtns(props) {
+export default function InvoiceBtns({ functions }) {
     return (
         <span className={style.btns}>
-            <button className={style.edit + " edit"}>
+            <button
+                className={style.edit + " edit"}
+                onClick={functions?.toggleEditMode}
+            >
                 <div className={style.text}>Edit</div>
             </button>
             <button className={style.delete}>

@@ -5,39 +5,20 @@ import Sidebar from "../components/sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import InvoiceBtns from "../components/header/components/InvoiceBtns";
 import { useRouter } from "next/router";
-
-String.prototype.capitialize = function () {
-    const first = this[0].toUpperCase();
-    const string = first + this.slice(1);
-    return string;
-};
-
-const modifyDate = (arg) => {
-    const month = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-    ];
-    let date = new Date(Date.parse(arg));
-    const mo = month[date.getMonth()];
-    const day = date.getDay() + 1;
-    const yr = date.getFullYear();
-
-    return `${mo} ${day} ${yr}`;
-};
+import InvoiceModal from "../components/invoiceModal/invoiceModal";
+import { modifyDate } from "../utils/helpers";
+import "../utils/proto";
 
 function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter();
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
+    // const [editing, setEditing] = useState(false);
+
+    const [state, setState] = useState({
+        data: [],
+        editing: false,
+    });
+
     useEffect(() => {
         const data = fetch("/data.json");
         data.then((res) => res.json()).then((res) => {
@@ -46,20 +27,33 @@ function MyApp({ Component, pageProps }: AppProps) {
                 el.createdAt = modifyDate(el.createdAt);
                 return el;
             });
-            setData(res);
+            setState({
+                ...state,
+                data: res,
+            });
         });
     }, []);
+
+    const functions = {};
+
+    functions.toggleEditMode = () => {
+        setState({
+            ...state,
+            editing: !state.editing,
+        });
+    };
 
     return (
         <div className='layout'>
             <Sidebar />
+            {state.editing && <InvoiceModal functions={functions} />}
             <main>
                 {/* <Header data={data} /> */}
-                <Component {...pageProps} data={data} />
+                <Component {...pageProps} state={state} functions={functions} />
             </main>
             {router.pathname == "/invoice/[id]" && (
                 <div className='onlyOnMobile mobileFooter'>
-                    <InvoiceBtns />
+                    <InvoiceBtns functions={functions} />
                 </div>
             )}
         </div>
