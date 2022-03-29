@@ -23,11 +23,7 @@ const Home: NextPage = ({ data }) => {
                 <div className={styles.container}>{tickets}</div>
             ) : (
                 <div className={styles.container + " " + styles.noInvoices}>
-                    <img
-                        src='/assets/illustration-empty.svg'
-                        alt=''
-                        srcset=''
-                    />
+                    <img src='/assets/illustration-empty.svg' alt='' />
                     <h2>There is nothing here</h2>
                     <p>
                         Create an invoice by clicking the New Invoice button and

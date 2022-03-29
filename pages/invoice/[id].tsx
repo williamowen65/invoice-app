@@ -80,7 +80,13 @@ export default function Invoice({ data }) {
                     <div className={style.row}>
                         <div className={style.innerRow}>
                             <div className={style.list + " dates"}>
-                                <span className={style.list + " createdAt"}>
+                                <span
+                                    className={
+                                        style.list +
+                                        " createdAt " +
+                                        style.createdAt
+                                    }
+                                >
                                     <span className={style.title + " title"}>
                                         Invoice Date
                                     </span>
@@ -93,7 +99,11 @@ export default function Invoice({ data }) {
                                     <span>{invoice.paymentDue}</span>
                                 </span>
                             </div>
-                            <div className={style.list + " billTo"}>
+                            <div
+                                className={
+                                    style.list + " billTo " + style.billTo
+                                }
+                            >
                                 <span className={style.title + " title"}>
                                     Bill To
                                 </span>
