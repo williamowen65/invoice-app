@@ -5,11 +5,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-bottom: 29px;
     .innerRow {
         display: flex;
         > * {
-            margin-right: 49px;
-            // margin-bottom: 29px;
+            margin-right: 50px;
         }
     }
     > * {
@@ -29,6 +29,9 @@
             justify-content: space-between;
         }
         white-space: nowrap;
+        &.sentTo {
+            flex-grow: 2;
+        }
     }
 }
 .invoice {

@@ -5,11 +5,9 @@ import arrow from "../assets/icon-arrow-left.svg";
 
 export default function GoBack(props) {
     return (
-        <Link href='/'>
-            <span className={style.goBack}>
-                {arrow()}
-                <span>Go Back</span>
-            </span>
-        </Link>
+        <span className={style.goBack}>
+            {arrow()}
+            <span>Go Back</span>
+        </span>
     );
 }

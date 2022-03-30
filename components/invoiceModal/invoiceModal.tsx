@@ -1,5 +1,6 @@
 import React from "react";
 import GoBack from "../header/components/GoBack";
+import Edit from "./Edit";
 import style from "./InvoiceModal.module.scss";
 
 export default function InvoiceModal({ functions, state }) {
@@ -14,13 +15,13 @@ export default function InvoiceModal({ functions, state }) {
     return (
         <>
             <div className='backdrop' onClick={handleToggle}></div>
-            <div className={style.invoiceModal}>
-                <form className={style.container}>
+            <div className={style.invoiceModal + " invoiceModal"}>
+                <div className={style.container}>
                     <span onClick={functions.toggleEditMode}>
                         <GoBack />
                     </span>
-                    <div>New Invoice</div>
-                </form>
+                    <Edit />
+                </div>
             </div>
         </>
     );

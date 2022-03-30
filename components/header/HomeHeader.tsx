@@ -48,7 +48,6 @@ export default function Header({ data, functions }) {
                             className='backdrop transparent'
                             onClick={handleToggle}
                         ></div>
-
                         <div className={style.field}>
                             <input type='radio' id='draft' name='status' />
                             <label htmlFor='draft'>

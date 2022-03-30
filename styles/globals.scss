@@ -2,6 +2,9 @@
 @import "./mixins";
 @import "./invoice_variables.scss";
 
+input:-webkit-autofill {
+    background-color: $card-bg-dark;
+}
 html,
 body {
     &::-webkit-scrollbar {
@@ -120,6 +123,20 @@ body {
                 }
             }
         }
+        .invoiceModal {
+            background-color: $main-bg-dark;
+            .field {
+                label {
+                    color: #888eb0;
+                }
+                input {
+                    color: white;
+                    background-color: $card-bg-dark;
+                }
+            }
+        }
+        // .form {
+        // }
     }
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -175,7 +192,7 @@ a {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.507);
-    position: absolute;
+    position: fixed;
     cursor: default;
     z-index: 1;
     &.transparent {

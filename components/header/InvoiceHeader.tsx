@@ -10,7 +10,11 @@ export default function InvoiceHeader({ data, functions }) {
 
     return (
         <>
-            <GoBack />
+            <Link href='/'>
+                <span>
+                    <GoBack />
+                </span>
+            </Link>
             <header className={style.header + " invoice"}>
                 <span className={style.statusText}>Status </span>
                 <span className={style.status}>
