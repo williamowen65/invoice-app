@@ -37,6 +37,26 @@ $mg: 24px;
 }
 
 .form {
+    .listItem {
+        display: flex;
+        flex-direction: column;
+        @media #{$tablet} {
+            flex-direction: row;
+            .itemName {
+                width: 150px;
+                margin-right: 7px;
+            }
+            .qty {
+                width: 70px !important;
+            }
+            .price {
+                width: 100px !important;
+            }
+            .row {
+                width: 100%;
+            }
+        }
+    }
     .row {
         display: flex;
         justify-content: space-between;
@@ -45,6 +65,10 @@ $mg: 24px;
             display: flex;
             justify-content: space-between;
             width: 80%;
+        }
+        .field {
+            width: 48%;
+            margin-right: 7px;
         }
     }
     .field {
@@ -63,7 +87,7 @@ $mg: 24px;
         }
     }
     .qty {
-        width: 100px;
+        width: 27% !important;
     }
     .price {
         justify-self: flex-start;
@@ -72,6 +96,7 @@ $mg: 24px;
         height: 100%;
         display: flex;
         align-items: center;
+        white-space: nowrap;
     }
     .delete {
         cursor: pointer;

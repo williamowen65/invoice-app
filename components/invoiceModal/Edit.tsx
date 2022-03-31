@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./InvoiceModal.module.scss";
 import trash from "./assets/icon-delete.svg";
 import { useRouter } from "next/router";
@@ -8,6 +8,7 @@ export default function Edit({ state }) {
     const { id } = router.query;
     const doc = state.data.find((el) => el.id === id);
     const [invoice, setInvoice] = useState(null);
+    const [items, setItems] = useState([]);
     useEffect(() => {
         if (doc) {
             setInvoice(doc);
@@ -45,6 +46,15 @@ export default function Edit({ state }) {
             invoice_date.value = invoice.createdAt;
             payment_terms.value = invoice.paymentTerms;
             project_description.value = invoice.description;
+
+            if (invoice.items) {
+                console.log(invoice.items);
+                const temp = [];
+                invoice.items.forEach((item) => {
+                    temp.push(<ListItem item={item} />);
+                });
+                setItems(temp);
+            }
         }
     }, [invoice]);
     return (
@@ -126,36 +136,63 @@ export default function Edit({ state }) {
                 </div>
             </section>
             <h3>Item List</h3>
-            <section>
-                <div className={style.field + " field"}>
-                    <label htmlFor='item_name'>Item Name</label>
-                    <input type='text' name='item_name' id='item_name' />
-                </div>
-                <div className={style.row}>
-                    <div className={style.innerRow}>
-                        <div className={style.field + " field " + style.qty}>
-                            <label htmlFor='quantity'>Qty.</label>
-                            <input
-                                type='number'
-                                name='quantity'
-                                id='quantity'
-                            />
-                        </div>
-                        <div className={style.field + " field " + style.price}>
-                            <label htmlFor='price'>Price</label>
-                            <input type='number' name='price' id='price' />
-                        </div>
-                        <div className={style.field + " field"}>
-                            <label htmlFor='total'>Total</label>
-                            <div className={style.total}>{"total"}</div>
-                        </div>
-                    </div>
-                    <div className={style.delete}>{trash()}</div>
-                </div>
-            </section>
+            {items}
             <div className={style.btn + " addNew " + style.addNew}>
                 + Add New Item
             </div>
         </div>
+    );
+}
+
+function ListItem({ item }) {
+    const [state, setState] = useState();
+    const name = useRef();
+    const quantity = useRef();
+    const price = useRef();
+    const total = useRef();
+    useEffect(() => {
+        if (item) {
+            // console.log(name.current);
+
+            name.current.value = item.name;
+            quantity.current.value = item.quantity;
+            price.current.value = item.price;
+        }
+    }, [item]);
+    return (
+        <section className={style.listItem}>
+            <div className={style.field + " field " + style.itemName}>
+                <label htmlFor='item_name'>Item Name</label>
+                <input type='text' name='item_name' id='item_name' ref={name} />
+            </div>
+            <div className={style.row}>
+                <div className={style.innerRow}>
+                    <div className={style.field + " field " + style.qty}>
+                        <label htmlFor='quantity'>Qty.</label>
+                        <input
+                            type='number'
+                            name='quantity'
+                            id='quantity'
+                            ref={quantity}
+                        />
+                    </div>
+                    <div className={style.field + " field " + style.price}>
+                        <label htmlFor='price'>Price</label>
+                        <input
+                            type='number'
+                            name='price'
+                            id='price'
+                            step='0.01'
+                            ref={price}
+                        />
+                    </div>
+                    <div className={style.field + " field"}>
+                        <label htmlFor='total'>Total</label>
+                        <div className={style.total}>£ {item.total}</div>
+                    </div>
+                </div>
+                <div className={style.delete}>{trash()}</div>
+            </div>
+        </section>
     );
 }
