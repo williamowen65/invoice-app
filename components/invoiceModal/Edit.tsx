@@ -1,11 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./InvoiceModal.module.scss";
 import trash from "./assets/icon-delete.svg";
+import { useRouter } from "next/router";
 
-export default function Edit(props) {
+export default function Edit({ state }) {
+    const router = useRouter();
+    const { id } = router.query;
+    const doc = state.data.find((el) => el.id === id);
+    const [invoice, setInvoice] = useState(null);
+    useEffect(() => {
+        if (doc) {
+            setInvoice(doc);
+        }
+    }, [doc]);
+
+    useEffect(() => {
+        if (invoice) {
+            // console.log("hi", document.forms);
+            const street_from = document.forms[0].street_from;
+            const city_from = document.forms[0].city_from;
+            const postCode_from = document.forms[0].postCode_from;
+            const country_from = document.forms[0].country_from;
+            const street_to = document.forms[0].street_to;
+            const city_to = document.forms[0].city_to;
+            const postCode_to = document.forms[0].postCode_to;
+            const country_to = document.forms[0].country_to;
+            const invoice_date = document.forms[0].invoice_date;
+            const payment_terms = document.forms[0].payment_terms;
+            const project_description = document.forms[0].project_description;
+            const item_name = document.forms[0].item_name;
+            const quantity = document.forms[0].quantity;
+            const price = document.forms[0].price;
+
+            console.log(invoice, street_from);
+
+            street_from.value = invoice.clientAddress.street;
+            city_from.value = invoice.clientAddress.city;
+            postCode_from.value = invoice.clientAddress.postCode;
+            country_from.value = invoice.clientAddress.country;
+            street_to.value = invoice.senderAddress.street;
+            city_to.value = invoice.senderAddress.city;
+            postCode_to.value = invoice.senderAddress.postCode;
+            country_to.value = invoice.senderAddress.country;
+            invoice_date.value = invoice.createdAt;
+            payment_terms.value = invoice.paymentTerms;
+            project_description.value = invoice.description;
+        }
+    }, [invoice]);
     return (
-        <form className={style.form + " form"} autoComplete='off'>
-            <h2>Edit #{"edit id"}</h2>
+        <div className={style.form + " form"} autoComplete='off'>
+            {state.editing && <h2>Edit #{id}</h2>}
+            {state.new && <h2>New Invoice</h2>}
             <section>
                 <p>Bill From</p>
                 <div className={style.field + " field"}>
@@ -90,11 +135,15 @@ export default function Edit(props) {
                     <div className={style.innerRow}>
                         <div className={style.field + " field " + style.qty}>
                             <label htmlFor='quantity'>Qty.</label>
-                            <input type='text' name='quantity' id='quantity' />
+                            <input
+                                type='number'
+                                name='quantity'
+                                id='quantity'
+                            />
                         </div>
                         <div className={style.field + " field " + style.price}>
                             <label htmlFor='price'>Price</label>
-                            <input type='text' name='price' id='price' />
+                            <input type='number' name='price' id='price' />
                         </div>
                         <div className={style.field + " field"}>
                             <label htmlFor='total'>Total</label>
@@ -104,11 +153,9 @@ export default function Edit(props) {
                     <div className={style.delete}>{trash()}</div>
                 </div>
             </section>
-            <div className={style.btn + " " + style.addNew}>+ Add New Item</div>
-            <div className={style.row}>
-                <div className='btn'>Cancel</div>
-                <button>Save Changes</button>
+            <div className={style.btn + " addNew " + style.addNew}>
+                + Add New Item
             </div>
-        </form>
+        </div>
     );
 }

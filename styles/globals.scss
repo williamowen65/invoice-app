@@ -134,6 +134,9 @@ body {
                     background-color: $card-bg-dark;
                 }
             }
+            .addNew {
+                color: #888eb0;
+            }
         }
         // .form {
         // }
@@ -205,4 +208,15 @@ a {
             top: -124px;
         }
     }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }

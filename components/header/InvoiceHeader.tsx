@@ -33,7 +33,7 @@ export default function InvoiceHeader({ data, functions }) {
                     )}
                 </span>
                 <div className={style.right}>
-                    <InvoiceBtns functions={functions} />
+                    <InvoiceBtns functions={functions} group='normal' />
                 </div>
             </header>
         </>

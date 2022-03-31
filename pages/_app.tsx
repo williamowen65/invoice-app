@@ -45,8 +45,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
 
     functions.toggleNewMode = () => {
-        console.log("hi");
-
         setState({
             ...state,
             new: !state.new,
@@ -64,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </main>
             {router.pathname == "/invoice/[id]" && (
                 <div className='onlyOnMobile mobileFooter'>
-                    <InvoiceBtns functions={functions} />
+                    <InvoiceBtns functions={functions} group='normal' />
                 </div>
             )}
         </div>

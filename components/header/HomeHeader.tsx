@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export default function Header({ data, functions }) {
     const toggle = useRef(null);
-    console.log(functions);
 
     const handleToggle = () => {
         const el = toggle.current;

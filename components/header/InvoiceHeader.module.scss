@@ -19,6 +19,30 @@
 }
 .btns {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    * {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    .delete {
+        background-color: #ec5757;
+        align-items: center;
+        width: 90px !important;
+        cursor: pointer;
+        &.draft {
+            width: 110px !important;
+        }
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        white-space: nowrap;
+        height: 48px;
+    }
+    @media #{$desktop} {
+        width: 100%;
+    }
     button {
         margin: 0 5px;
         @include button();
