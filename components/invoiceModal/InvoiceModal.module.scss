@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+$mg: 24px;
 
 .invoiceModal {
     overflow-y: scroll;
@@ -6,7 +7,7 @@
     position: fixed;
     z-index: 1;
     height: 100%;
-    margin-top: $sidebar-width;
+    padding-top: $sidebar-width;
     width: 100vw;
     &::-webkit-scrollbar {
         display: none;
@@ -17,10 +18,10 @@
     }
     @media #{$desktop} {
         padding-left: $sidebar-width-desktop;
-        margin-top: 0;
+        padding-top: 0;
     }
     .container {
-        margin: 24px;
+        margin: $mg;
     }
 }
 
@@ -63,5 +64,26 @@
     }
     .delete {
         cursor: pointer;
+    }
+    .btn {
+        border-radius: 200px;
+        display: flex;
+        justify-content: center;
+        line-height: 48px;
+        margin-bottom: 24px;
+        cursor: pointer;
+        &.addNew {
+            margin-top: 48px;
+            background-color: #252945;
+        }
+    }
+    .footer {
+        background-color: #1e2139;
+        // position: absolute;
+        // left: 0;
+        @media #{$desktop} {
+            // left: $sidebar-width-desktop;
+            // width: calc(100% - $sidebar-width-desktop);
+        }
     }
 }

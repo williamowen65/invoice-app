@@ -104,7 +104,7 @@ export default function Edit(props) {
                     <div className={style.delete}>{trash()}</div>
                 </div>
             </section>
-            <div className='btn'>+ Add New Item</div>
+            <div className={style.btn + " " + style.addNew}>+ Add New Item</div>
             <div className={style.row}>
                 <div className='btn'>Cancel</div>
                 <button>Save Changes</button>
