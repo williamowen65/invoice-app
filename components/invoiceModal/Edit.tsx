@@ -166,7 +166,7 @@ function ListItem({ item }) {
                 <input type='text' name='item_name' id='item_name' ref={name} />
             </div>
             <div className={style.row}>
-                <div className={style.innerRow}>
+                <div className={style.innerRow + " " + style.qtyPriceTotal}>
                     <div className={style.field + " field " + style.qty}>
                         <label htmlFor='quantity'>Qty.</label>
                         <input

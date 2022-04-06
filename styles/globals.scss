@@ -57,8 +57,21 @@ body {
             }
         }
         .addNew {
+            border: 1px solid #dfe3fa;
             color: #888eb0;
-            color: white;
+            // color: white;
+            background-color: #ffffff;
+        }
+        .invoiceFooter {
+            &::after {
+                content: "";
+                position: absolute;
+                left: -19px;
+                top: 44px;
+                width: 56px;
+                height: 53px;
+                background-color: $main-bg-light;
+            }
         }
     }
     .edit {
@@ -152,8 +165,20 @@ body {
                 }
             }
             .addNew {
-                color: #888eb0;
                 color: white;
+                border: 1px solid transparent;
+                background-color: #252945;
+            }
+            .invoiceFooter {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: -19px;
+                    top: 44px;
+                    width: 56px;
+                    height: 53px;
+                    background-color: $main-bg-dark;
+                }
             }
         }
         // .form {

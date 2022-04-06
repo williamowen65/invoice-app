@@ -23,7 +23,7 @@ $mg: 24px;
         padding-top: 0;
     }
     .container {
-        height: 100vh;
+        // height: 100vh;
         overflow: hidden;
         margin: $mg;
     }
@@ -44,7 +44,7 @@ $mg: 24px;
     .listItem {
         display: flex;
         flex-direction: column;
-        @media #{$tablet} {
+        @media #{$desktop} {
             flex-direction: row;
             .itemName {
                 width: 150px;
@@ -58,6 +58,11 @@ $mg: 24px;
             }
             .row {
                 width: 100%;
+            }
+        }
+        .qtyPriceTotal {
+            > * {
+                margin: 0 5px $mg;
             }
         }
     }
@@ -78,7 +83,7 @@ $mg: 24px;
     .field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 24px;
+        margin-bottom: $mg;
         label {
             font-size: 13px;
             margin-bottom: 9px;
@@ -115,7 +120,6 @@ $mg: 24px;
 
         &.addNew {
             margin-top: 48px;
-            background-color: #252945;
         }
     }
 }
@@ -126,6 +130,7 @@ $mg: 24px;
     align-items: center;
     margin-top: 84px;
     box-shadow: 0 7px 86px black;
+    position: relative;
     button {
         margin: 24px 0;
     }

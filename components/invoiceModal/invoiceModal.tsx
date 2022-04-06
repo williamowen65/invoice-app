@@ -26,16 +26,16 @@ export default function InvoiceModal({ functions, state }) {
                         </span>
                         <Edit state={state} />
                     </div>
-                    {state.editing && (
-                        <div className={style.row + " " + style.footer}>
+                    <div
+                        className={style.row + " invoiceFooter " + style.footer}
+                    >
+                        {state.editing && (
                             <InvoiceBtns functions={functions} group='edit' />
-                        </div>
-                    )}
-                    {state.new && (
-                        <div className={style.row + " " + style.footer}>
+                        )}
+                        {state.new && (
                             <InvoiceBtns functions={functions} group='new' />
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </form>
             </div>
         </>
