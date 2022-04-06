@@ -10,6 +10,7 @@ export default function InvoiceModal({ functions, state }) {
         if (state.editing) {
             functions.toggleEditMode();
         } else {
+            console.log("hi for new");
             functions.toggleNewMode();
         }
     };
@@ -20,7 +21,7 @@ export default function InvoiceModal({ functions, state }) {
             <div className={style.invoiceModal + " invoiceModal"}>
                 <form>
                     <div className={style.container}>
-                        <span onClick={functions.toggleEditMode}>
+                        <span onClick={handleToggle}>
                             <GoBack />
                         </span>
                         <Edit state={state} />

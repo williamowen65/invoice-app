@@ -19,6 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         editing: false,
         new: false,
     });
+    useEffect(() => {
+        if (router.pathname === "/") {
+            setState({
+                ...state,
+                editing: false,
+                new: false,
+            });
+        }
+    }, [router.pathname]);
 
     useEffect(() => {
         const data = fetch("/data.json");

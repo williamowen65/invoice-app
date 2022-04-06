@@ -45,6 +45,22 @@ body {
         @include card("light");
         box-shadow: $shadow;
     }
+    .invoiceModal {
+        background-color: $main-bg-light;
+        .field {
+            label {
+                color: #888eb0;
+            }
+            input {
+                border: 1px solid #dfe3fa;
+                background-color: $card-bg-light;
+            }
+        }
+        .addNew {
+            color: #888eb0;
+            color: white;
+        }
+    }
     .edit {
         @include button();
         background-color: #dfe3fa;
@@ -130,12 +146,14 @@ body {
                     color: #888eb0;
                 }
                 input {
+                    border: 1px solid transparent;
                     color: white;
                     background-color: $card-bg-dark;
                 }
             }
             .addNew {
                 color: #888eb0;
+                color: white;
             }
         }
         // .form {
