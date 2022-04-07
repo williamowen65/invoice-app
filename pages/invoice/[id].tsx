@@ -34,7 +34,7 @@ export default function Invoice({ state, functions }) {
 
         const itemsMobile = invoice?.items.map((el) => {
             return (
-                <div className={style.mobileItem}>
+                <div className={style.mobileItem} key={el.name}>
                     <div className={style.left}>
                         <span>{el.name}</span>
                         <span className='title'>
