@@ -21,9 +21,9 @@ export default function Invoice({ state, functions }) {
     useEffect(() => {
         // console.log(invoice);
 
-        const itemsTable = invoice?.items.map((el) => {
+        const itemsTable = invoice?.items.map((el, i) => {
             return (
-                <tr>
+                <tr key={i}>
                     <td className={style.first}>{el.name}</td>
                     <td>{el.quantity}</td>
                     <td>£ {el.price}</td>
