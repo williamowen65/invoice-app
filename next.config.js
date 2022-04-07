@@ -11,6 +11,9 @@ const nextConfig = {
         return config;
     },
     withImages,
+    typescript: {
+        ignoreBuildErrors: true,
+    },
 };
 
 module.exports = nextConfig;
