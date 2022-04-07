@@ -19,8 +19,6 @@ export default function Invoice({ state, functions }) {
     const [itemsMobile, setItemsMobile] = useState([]);
 
     useEffect(() => {
-        // console.log(invoice);
-
         const itemsTable = invoice?.items.map((el, i) => {
             return (
                 <tr key={i}>
