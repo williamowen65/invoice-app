@@ -44,7 +44,7 @@ export default function Header({ data, functions }) {
                             <span className='hideOnMobile'> invoices</span>
                         </>
                     ) : (
-                        <span>No invoices</span>
+                        <span>No {filter} invoices</span>
                     )}
                 </span>
             </div>
