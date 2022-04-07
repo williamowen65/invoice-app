@@ -47,7 +47,7 @@ export default function Invoice({ state, functions }) {
 
         setItemsTable(itemsTable);
         setItemsMobile(itemsMobile);
-    }, [invoice]);
+    }, [invoice, invoice?.items]);
 
     return (
         invoice && (

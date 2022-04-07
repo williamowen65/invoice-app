@@ -3,7 +3,7 @@ import style from "./InvoiceModal.module.scss";
 import trash from "./assets/icon-delete.svg";
 import { useRouter } from "next/router";
 
-export default function Edit({ state }) {
+export default function Edit({ state, functions }) {
     const router = useRouter();
     const { id } = router.query;
     const doc = state.data.find((el) => el.id === id);
@@ -33,7 +33,7 @@ export default function Edit({ state }) {
             const quantity = document.forms[0].quantity;
             const price = document.forms[0].price;
 
-            console.log(invoice, street_from);
+            // console.log(invoice, street_from);
 
             street_from.value = invoice.clientAddress.street;
             city_from.value = invoice.clientAddress.city;
@@ -51,12 +51,12 @@ export default function Edit({ state }) {
                 console.log(invoice.items);
                 const temp = [];
                 invoice.items.forEach((item) => {
-                    temp.push(<ListItem item={item} />);
+                    temp.push(<ListItem item={item} functions={functions} />);
                 });
                 setItems(temp);
             }
         }
-    }, [invoice]);
+    }, [invoice, invoice?.items]);
     return (
         <div className={style.form + " form"} autoComplete='off'>
             {state.editing && <h2>Edit #{id}</h2>}
@@ -144,7 +144,9 @@ export default function Edit({ state }) {
     );
 }
 
-function ListItem({ item }) {
+function ListItem({ item, functions }) {
+    const router = useRouter();
+    const { id } = router.query;
     const [state, setState] = useState();
     const name = useRef();
     const quantity = useRef();
@@ -191,7 +193,12 @@ function ListItem({ item }) {
                         <div className={style.total}>£ {item.total}</div>
                     </div>
                 </div>
-                <div className={style.delete}>{trash()}</div>
+                <div
+                    className={style.delete}
+                    onClick={() => functions.deleteItem(id, item.name)}
+                >
+                    {trash()}
+                </div>
             </div>
         </section>
     );

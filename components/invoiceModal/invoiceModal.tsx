@@ -37,7 +37,7 @@ export default function InvoiceModal({ functions, state }) {
                         <span onClick={handleToggle}>
                             <GoBack />
                         </span>
-                        <Edit state={state} />
+                        <Edit state={state} functions={functions} />
                     </div>
                     <div
                         className={style.row + " invoiceFooter " + style.footer}

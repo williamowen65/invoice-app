@@ -1,7 +1,11 @@
+import { useRouter } from "next/router";
 import React from "react";
 import style from "../InvoiceHeader.module.scss";
 
 export default function InvoiceBtns({ functions, group }) {
+    const router = useRouter();
+    const { id } = router.query;
+
     if (group == "normal") {
         return (
             <span className={style.btns}>
@@ -11,10 +15,16 @@ export default function InvoiceBtns({ functions, group }) {
                 >
                     <div className={style.text}>Edit</div>
                 </button>
-                <button className={style.delete}>
+                <button
+                    className={style.delete}
+                    onClick={() => functions.delete(id)}
+                >
                     <div className={style.text}>Delete</div>
                 </button>
-                <button className={style.markPaid}>
+                <button
+                    className={style.markPaid}
+                    onClick={() => functions.markPaid(id)}
+                >
                     <div className={style.text}>Mark as Paid</div>
                 </button>
             </span>

@@ -60,6 +60,38 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
     };
 
+    functions.delete = (id) => {
+        setState({
+            ...state,
+            data: state.data.filter((el) => el.id != id),
+        });
+        router.push("/");
+    };
+
+    functions.deleteItem = (id, itemName) => {
+        setState({
+            ...state,
+            data: state.data.map((el) => {
+                if (el.id == id) {
+                    el.items = el.items.filter((item) => item.name != itemName);
+                }
+                return el;
+            }),
+        });
+    };
+
+    functions.markPaid = (id) => {
+        setState({
+            ...state,
+            data: state.data.map((el) => {
+                if (el.id == id) {
+                    el.status = "paid";
+                }
+                return el;
+            }),
+        });
+    };
+
     return (
         <div className='layout'>
             <Sidebar />
