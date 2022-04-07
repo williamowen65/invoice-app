@@ -10,7 +10,7 @@ const Home: NextPage = ({ state, functions }) => {
     const [tickets, setTickets] = useState([]);
 
     useEffect(() => {
-        const tickets = state.data?.map((ticket) => {
+        const tickets = state.filteredData?.map((ticket) => {
             return <Ticket data={ticket} key={ticket.id} />;
         });
         setTickets(tickets);
@@ -18,8 +18,8 @@ const Home: NextPage = ({ state, functions }) => {
 
     return (
         <>
-            <HomeHeader data={state?.data} functions={functions} />
-            {state?.data.length ? (
+            <HomeHeader data={state} functions={functions} />
+            {state?.filteredData.length ? (
                 <div className={styles.container}>{tickets}</div>
             ) : (
                 <div className={styles.container + " " + styles.noInvoices}>

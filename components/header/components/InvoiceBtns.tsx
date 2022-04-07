@@ -32,8 +32,13 @@ export default function InvoiceBtns({ functions, group }) {
     } else if (group === "edit") {
         return (
             <span className={style.btns}>
-                <span className={style.edit + " edit"}>
-                    <div className={style.text}>Discard</div>
+                <span className={style.edit + " edit discard"}>
+                    <div
+                        className={style.text}
+                        onClick={() => functions.toggleEditMode()}
+                    >
+                        Discard Changes
+                    </div>
                 </span>
                 <button className={style.markPaid}>
                     <div className={style.text}>Send & Save</div>

@@ -16,8 +16,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     const [state, setState] = useState({
         data: [],
+        filteredData: [],
         editing: false,
         new: false,
+        filter: "",
     });
     useEffect(() => {
         if (router.pathname === "/") {
@@ -40,6 +42,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             setState({
                 ...state,
                 data: res,
+                filteredData: res,
             });
         });
     }, []);
@@ -90,6 +93,20 @@ function MyApp({ Component, pageProps }: AppProps) {
                 return el;
             }),
         });
+    };
+
+    functions.filterBy = (status) => {
+        status
+            ? setState({
+                  ...state,
+                  filter: status,
+                  filteredData: state.data.filter((el) => el.status == status),
+              })
+            : setState({
+                  ...state,
+                  filter: "",
+                  filteredData: state.data,
+              });
     };
 
     return (

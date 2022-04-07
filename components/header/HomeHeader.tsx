@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./HomeHeader.module.scss";
 import arrow from "./assets/icon-arrow-down.svg";
 import check from "./assets/icon-check.svg";
@@ -17,15 +17,30 @@ export default function Header({ data, functions }) {
         }
     };
 
+    const [filter, setFilter] = useState();
+    const handleFilter = (e) => {
+        const val = e.target.nextSibling.htmlFor;
+
+        if (val == filter) {
+            e.target.checked = false;
+            setFilter(null);
+        } else {
+            setFilter(val);
+        }
+    };
+    useEffect(() => {
+        functions.filterBy(filter);
+    }, [filter]);
+
     return (
         <header className={style.header}>
             <div className={style.pageinfo}>
                 <h1>Invoices</h1>
                 <span className='sec-color'>
-                    {data.length ? (
+                    {data.filteredData.length ? (
                         <>
                             <span className='hideOnMobile'>There are </span>
-                            {data.length} total
+                            {data.filteredData.length} total {data.filter}
                             <span className='hideOnMobile'> invoices</span>
                         </>
                     ) : (
@@ -48,7 +63,12 @@ export default function Header({ data, functions }) {
                             onClick={handleToggle}
                         ></div>
                         <div className={style.field}>
-                            <input type='radio' id='draft' name='status' />
+                            <input
+                                type='radio'
+                                id='draft'
+                                name='status'
+                                onClick={handleFilter}
+                            />
                             <label htmlFor='draft'>
                                 <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>
@@ -57,7 +77,12 @@ export default function Header({ data, functions }) {
                             </label>
                         </div>
                         <div className={style.field}>
-                            <input type='radio' id='pending' name='status' />
+                            <input
+                                type='radio'
+                                id='pending'
+                                name='status'
+                                onClick={handleFilter}
+                            />
                             <label htmlFor='pending'>
                                 <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>
@@ -66,7 +91,12 @@ export default function Header({ data, functions }) {
                             </label>
                         </div>
                         <div className={style.field}>
-                            <input type='radio' id='paid' name='status' />
+                            <input
+                                type='radio'
+                                id='paid'
+                                name='status'
+                                onClick={handleFilter}
+                            />
                             <label htmlFor='paid'>
                                 <div className={style.checkbox + " checkbox"}>
                                     <span>{check()}</span>

@@ -58,7 +58,7 @@ export default function Edit({ state, functions }) {
         }
     }, [invoice, invoice?.items]);
     return (
-        <div className={style.form + " form"} autoComplete='off'>
+        <div className={style.form + " form"}>
             {state.editing && <h2>Edit #{id}</h2>}
             {state.new && <h2>New Invoice</h2>}
             <section>

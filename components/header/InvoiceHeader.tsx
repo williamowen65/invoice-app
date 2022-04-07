@@ -9,7 +9,7 @@ export default function InvoiceHeader({ data, functions }) {
     const [status, setStatus] = useState(data.status);
 
     useEffect(() => {
-        console.log("change of status");
+        // console.log("change of status");
 
         setStatus(data.status);
     }, [data.status]);

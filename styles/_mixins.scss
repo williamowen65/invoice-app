@@ -111,6 +111,9 @@
         color: #7e88c3;
         width: 60px !important;
         background-color: #f9fafe;
+        &.discard {
+            width: 142px !important;
+        }
     }
 }
 

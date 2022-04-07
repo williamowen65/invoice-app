@@ -6,6 +6,7 @@ import style from "../../styles/Invoice.module.scss";
 export default function Invoice({ state, functions }) {
     const router = useRouter();
     const { id } = router.query;
+
     const doc = state.data.find((el) => el.id === id);
     const [invoice, setInvoice] = useState(null);
     useEffect(() => {

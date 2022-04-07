@@ -32,7 +32,7 @@ export default function InvoiceModal({ functions, state }) {
         <>
             <div className='backdrop' onClick={handleToggle}></div>
             <div className={style.invoiceModal + " invoiceModal"} ref={modal}>
-                <form>
+                <form autoComplete='off'>
                     <div className={style.container}>
                         <span onClick={handleToggle}>
                             <GoBack />
