@@ -64,8 +64,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
 
     functions.delete = (id) => {
+        console.log("delete att", id);
+
         setState({
             ...state,
+            filteredData: state.filteredData.filter((el) => el.id != id),
             data: state.data.filter((el) => el.id != id),
         });
         router.push("/");
