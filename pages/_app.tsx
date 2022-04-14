@@ -74,22 +74,62 @@ function MyApp({ Component, pageProps }: AppProps) {
         router.push("/");
     };
 
-    functions.deleteItem = (id, itemName) => {
-        setState({
-            ...state,
-            data: state.data.map((el) => {
-                if (el.id == id) {
-                    el.items = el.items.filter((item) => item.name != itemName);
-                }
-                return el;
-            }),
-        });
+    // functions.deleteItem = (id, itemName) => {
+    //     setState({
+    //         ...state,
+    //         data: state.data.map((el) => {
+    //             if (el.id == id) {
+    //                 el.items = el.items.filter((item) => item.name != itemName);
+    //             }
+    //             return el;
+    //         }),
+    //     });
+    // };
+
+    functions.applyEditsOrCreate = (obj) => {
+        console.log(obj);
+
+        if (state.data.find((el) => el.id == obj.id)) {
+            setState({
+                ...state,
+                data: state.data.map((el) => {
+                    if (el.id == obj.id) {
+                        return obj;
+                    }
+                    return el;
+                }),
+                filteredData: state.filteredData.map((el) => {
+                    if (el.id == obj.id) {
+                        return obj;
+                    }
+                    return el;
+                }),
+            });
+        } else {
+            setState({
+                ...state,
+                data: state.data.concat(obj),
+            });
+            if (state.filter == obj.status || state.filter == "") {
+                setState({
+                    ...state,
+                    filteredData: state.filteredData.concat(obj),
+                });
+            }
+            //create new
+        }
     };
 
     functions.markPaid = (id) => {
         setState({
             ...state,
             data: state.data.map((el) => {
+                if (el.id == id) {
+                    el.status = "paid";
+                }
+                return el;
+            }),
+            filteredData: state.filteredData.map((el) => {
                 if (el.id == id) {
                     el.status = "paid";
                 }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./InvoiceModal.module.scss";
 import trash from "./assets/icon-delete.svg";
 import { useRouter } from "next/router";
+import { unmountComponentAtNode } from "react-dom";
 
 export default function Edit({ state, functions }) {
     const router = useRouter();
@@ -48,7 +49,6 @@ export default function Edit({ state, functions }) {
             project_description.value = invoice.description;
 
             if (invoice.items) {
-                console.log(invoice.items);
                 const temp = [];
                 invoice.items.forEach((item) => {
                     temp.push(<ListItem item={item} functions={functions} />);
@@ -152,6 +152,8 @@ function ListItem({ item, functions }) {
     const quantity = useRef();
     const price = useRef();
     const total = useRef();
+    const rand = Math.floor(Math.random() * 100000).toString();
+    const [show, setShow] = useState(true);
     useEffect(() => {
         if (item) {
             // console.log(name.current);
@@ -161,45 +163,67 @@ function ListItem({ item, functions }) {
             price.current.value = item.price;
         }
     }, [item]);
-    return (
-        <section className={style.listItem}>
-            <div className={style.field + " field " + style.itemName}>
-                <label htmlFor='item_name'>Item Name</label>
-                <input type='text' name='item_name' id='item_name' ref={name} />
-            </div>
-            <div className={style.row}>
-                <div className={style.innerRow + " " + style.qtyPriceTotal}>
-                    <div className={style.field + " field " + style.qty}>
-                        <label htmlFor='quantity'>Qty.</label>
-                        <input
-                            type='number'
-                            name='quantity'
-                            id='quantity'
-                            ref={quantity}
-                        />
+
+    const [qt, setQuantity] = useState(item.quantity);
+    const [pr, setPrice] = useState(item.price);
+
+    const updateQuantity = (e) => {
+        setQuantity(+e.target.value);
+    };
+    const updatePrice = (e) => {
+        setPrice(+e.target.value);
+    };
+
+    if (show) {
+        return (
+            <section className={style.listItem} id={"a" + rand}>
+                <div className={style.field + " field " + style.itemName}>
+                    <label htmlFor='item_name'>Item Name</label>
+                    <input
+                        type='text'
+                        name='item_name'
+                        id='item_name'
+                        ref={name}
+                    />
+                </div>
+                <div className={style.row}>
+                    <div className={style.innerRow + " " + style.qtyPriceTotal}>
+                        <div className={style.field + " field " + style.qty}>
+                            <label htmlFor='quantity'>Qty.</label>
+                            <input
+                                type='number'
+                                name='quantity'
+                                id='quantity'
+                                ref={quantity}
+                                onChange={updateQuantity}
+                            />
+                        </div>
+                        <div className={style.field + " field " + style.price}>
+                            <label htmlFor='price'>Price</label>
+                            <input
+                                type='number'
+                                name='price'
+                                id='price'
+                                step='0.01'
+                                ref={price}
+                                onChange={updatePrice}
+                            />
+                        </div>
+                        <div className={style.field + " field"}>
+                            <label htmlFor='total'>Total</label>
+                            <div className={style.total}>£ {qt * pr}</div>
+                        </div>
                     </div>
-                    <div className={style.field + " field " + style.price}>
-                        <label htmlFor='price'>Price</label>
-                        <input
-                            type='number'
-                            name='price'
-                            id='price'
-                            step='0.01'
-                            ref={price}
-                        />
-                    </div>
-                    <div className={style.field + " field"}>
-                        <label htmlFor='total'>Total</label>
-                        <div className={style.total}>£ {item.total}</div>
+                    <div
+                        className={style.delete}
+                        onClick={() => setShow(false)}
+                    >
+                        {trash()}
                     </div>
                 </div>
-                <div
-                    className={style.delete}
-                    onClick={() => functions.deleteItem(id, item.name)}
-                >
-                    {trash()}
-                </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    } else {
+        return null;
+    }
 }

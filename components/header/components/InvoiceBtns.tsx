@@ -40,7 +40,7 @@ export default function InvoiceBtns({ functions, group }) {
                         Discard Changes
                     </div>
                 </span>
-                <button className={style.markPaid}>
+                <button className={style.markPaid} type='submit'>
                     <div className={style.text}>Send & Save</div>
                 </button>
             </span>
@@ -54,7 +54,7 @@ export default function InvoiceBtns({ functions, group }) {
                 <span className={style.delete + " " + style.draft}>
                     <div className={style.text}>Save as Draft</div>
                 </span>
-                <button className={style.markPaid}>
+                <button className={style.markPaid} type='submit'>
                     <div className={style.text}>Send & Save</div>
                 </button>
             </span>
